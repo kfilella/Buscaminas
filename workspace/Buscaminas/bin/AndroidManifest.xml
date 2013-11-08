@@ -22,6 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="Juego"
+            android:label="@string/actividad2" >
+            </activity>
+            
+         <activity
+            android:name="Creditos"
+            android:label="@string/credito" >
+            </activity>
+            
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ import com.example.buscaminas.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -12,7 +13,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class Buscaminas extends Activity implements OnClickListener {
-
+	
+	
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,50 +25,24 @@ public class Buscaminas extends Activity implements OnClickListener {
         clickExit.setOnClickListener(this);
         View clickCredits = findViewById(R.id.creditsB);
         clickCredits.setOnClickListener(this);
-        View clickDiff = findViewById(R.id.difficultyB);
+        View clickDiff = findViewById(R.id.dificultad);
         clickDiff.setOnClickListener(this);
         View clickHighSc = findViewById(R.id.highscoresB);
         clickHighSc.setOnClickListener(this);
         View clickNewGame = findViewById(R.id.newgameB);
         clickNewGame.setOnClickListener(this);
+        
     }
 
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.buscaminas, menu);
         return true;
     }
-
-    public void creditsDialog(View view) {
-    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-    	dialog.setTitle("Credits");
-    	dialog.setMessage("Edinson Sanchez\nAdrian Aguilar\nKevin Filella");
-    	dialog.show();
-    }
+  
     
-    //--------TEST BUTTON DIALOGS--------
-    
-    public void newGameDialog(View view) {
-    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-    	dialog.setTitle("Test - New Game");
-    	dialog.setMessage("Under construction");
-    	dialog.show();
-    }
-    
-    public void diffDialog(View view) {
-    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-    	dialog.setTitle("Test - Difficulty");
-    	dialog.setMessage("Under construction");
-    	dialog.show();
-    }
-    
-    public void highScDialog(View view) {
-    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-    	dialog.setTitle("Test - High Scores");
-    	dialog.setMessage("Under construction");
-    	dialog.show();
-    }
     
     //--------END TEST BUTTON DIALOGS--------
     
@@ -77,17 +53,32 @@ public class Buscaminas extends Activity implements OnClickListener {
 		myMsg.setText("Central");
 		myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
 		popupBuilder.setView(myMsg);
-		if (view.getId()==R.id.exitB)
-			finish();
-		if (view.getId()==R.id.creditsB)
-			creditsDialog(view);
-		//--------TEST BUTTONS--------
-		if (view.getId()==R.id.newgameB)
-			newGameDialog(view);
-		if (view.getId()==R.id.highscoresB)
-			highScDialog(view);
-		if (view.getId()==R.id.difficultyB)
-			diffDialog(view);
-		//--------END TEST BUTTONS--------
+		if(view.getId()==findViewById(R.id.creditsB).getId())
+    	{   	
+			Intent j= new Intent(this,Creditos.class);
+	    	 startActivity(j);
+    	}
+    	
+    	if(view.getId()==findViewById(R.id.dificultad).getId())
+    	{   	
+    	 Intent i= new Intent(this,Juego.class);
+    	 startActivity(i);
+    	}
+    	
+    	if(view.getId()==findViewById(R.id.newgameB).getId())
+    	{   	
+    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
+    	dialog.setTitle("New Game");
+    	dialog.setMessage("Falta implementar =:D");
+    	dialog.show();
+    	}
+    	
+    	if(view.getId()==findViewById(R.id.highscoresB).getId())
+    	{   	
+    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
+    	dialog.setTitle("High Scores");
+    	dialog.setMessage("Falta implementar =:D");
+    	dialog.show();
+    	}
 	}
 }
