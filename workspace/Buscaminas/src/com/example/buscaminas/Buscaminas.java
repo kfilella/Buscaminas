@@ -61,16 +61,16 @@ public class Buscaminas extends Activity implements OnClickListener {
     	
     	if(view.getId()==findViewById(R.id.dificultad).getId())
     	{   	
-    	 Intent i= new Intent(this,Juego.class);
-    	 startActivity(i);
+    		AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
+        	dialog.setTitle("Difficulty");
+        	dialog.setMessage("Falta implementar =:D");
+        	dialog.show();
     	}
     	
     	if(view.getId()==findViewById(R.id.newgameB).getId())
     	{   	
-    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-    	dialog.setTitle("New Game");
-    	dialog.setMessage("Falta implementar =:D");
-    	dialog.show();
+	    	Intent i= new Intent(this,Juego.class);
+	       	startActivity(i);
     	}
     	
     	if(view.getId()==findViewById(R.id.highscoresB).getId())
@@ -79,6 +79,10 @@ public class Buscaminas extends Activity implements OnClickListener {
     	dialog.setTitle("High Scores");
     	dialog.setMessage("Falta implementar =:D");
     	dialog.show();
+    	}
+    	if(view.getId()==findViewById(R.id.exitB).getId())
+    	{
+    		finish();
     	}
 	}
 }
