@@ -1,86 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-	android:background="@drawable/bg1" >
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1" >
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_marginBottom="5dp"
+        android:layout_weight="0.05" >
 
         <LinearLayout
+            android:id="@+id/layoutcabecera"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" >
 
             <TextView
-                android:id="@+id/tiempo"
-                android:layout_width="wrap_content"
+                android:id="@+id/puntaje"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="TextView" />
 
+            <Button
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_styles" />
+
+            <LinearLayout
+                android:id="@+id/layouttiempo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tiempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+            </LinearLayout>
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/download" />
-
-        <TextView
-            android:id="@+id/puntaje"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
     </TableRow>
 
-    <TableRow
-        android:id="@+id/espaciovacio"
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView1"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1" >
 
-    </TableRow>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-    <TableRow
-        android:id="@+id/tablero"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-        <TableLayout
-            android:id="@+id/tabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-        </TableLayout>
-
-    </TableRow>
+                <TableLayout
+                    android:id="@+id/tabla"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+                </TableLayout>
+            </ScrollView>
+        </FrameLayout>
+    </HorizontalScrollView>
 
 </TableLayout>
