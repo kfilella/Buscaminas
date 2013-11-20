@@ -26,12 +26,15 @@ public class Juego extends Activity {
 	private TextView tiempo;
 	private TextView puntaje;
 	TableLayout tablero;
-	private Celda matriz[][] = new Celda[32][32];
+	
 	private Celda n1;
 	LinearLayout layouttiempo;
 	Chronometer tiempo1;
+	final static int ANCHO=32;
+	final static int ALTO=32;
+	private Celda matriz[][] = new Celda[ANCHO][ALTO];
 	
-	View[][] matrizCeldas = new View[32][32];
+	View[][] matrizCeldas = new View[ANCHO][ALTO];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +61,21 @@ public class Juego extends Activity {
         //tiempo.setTypeface(lcdFont);
         //puntaje.setTypeface(lcdFont);
         
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < ANCHO; i++) {
         	TableRow fila = new TableRow(this);
-        	for (int j=0; j<32; j++){
-        		matriz[i][j] = new Celda(this,i,j,0);
+        	for (int j=0; j<ALTO; j++){
+        		final Celda c =  new Celda(this,i,j,0);	
+        		 
+        		matriz[i][j] = c;
         		//matriz[i][j].setOnClickListener(this);
         		matrizCeldas[i][j]= matriz[i][j];
         		fila.addView(matriz[i][j],40,40);
+        		c.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                   	 c.descubrirAdyacentes(c, matriz, ANCHO, ALTO);
+                  
+                    }
+                });
         	}
         	tablero.addView(fila);
     	}

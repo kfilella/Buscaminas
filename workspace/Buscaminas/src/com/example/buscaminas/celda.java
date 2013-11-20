@@ -13,7 +13,7 @@ public class Celda extends Button {
 		super(context);
 		this.pos_x = posx;
 		this.pos_y = posy;
-		this.valor = val;
+		this.valor = 0;
 	}
 	public void descubrirAdyacentes(Celda celda, Celda[][] matriz, int ancho, int alto){
 		if(celda.isPressed()){
