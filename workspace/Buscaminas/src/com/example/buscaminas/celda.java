@@ -5,17 +5,17 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.widget.Button;
 
-public class celda extends Button {
+public class Celda extends Button {
 	int pos_x;
 	int pos_y;
 	int valor;
-	public celda(Context context, int posx, int posy, int val) {
+	public Celda(Context context, int posx, int posy, int val) {
 		super(context);
 		this.pos_x = posx;
 		this.pos_y = posy;
 		this.valor = val;
 	}
-	public void descubrirAdyacentes(celda celda, celda[][] matriz, int ancho, int alto){
+	public void descubrirAdyacentes(Celda celda, Celda[][] matriz, int ancho, int alto){
 		if(celda.isPressed()){
 			if(celda.valor!=-1){
 				if(celda.valor==0){

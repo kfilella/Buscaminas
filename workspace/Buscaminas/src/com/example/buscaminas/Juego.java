@@ -26,8 +26,8 @@ public class Juego extends Activity {
 	private TextView tiempo;
 	private TextView puntaje;
 	TableLayout tablero;
-	private celda matriz[][] = new celda[32][32];
-	private celda n1;
+	private Celda matriz[][] = new Celda[32][32];
+	private Celda n1;
 	LinearLayout layouttiempo;
 	Chronometer tiempo1;
 	
@@ -61,7 +61,7 @@ public class Juego extends Activity {
         for (int i = 0; i < 32; i++) {
         	TableRow fila = new TableRow(this);
         	for (int j=0; j<32; j++){
-        		matriz[i][j] = new celda(this,i,j,0);
+        		matriz[i][j] = new Celda(this,i,j,0);
         		//matriz[i][j].setOnClickListener(this);
         		matrizCeldas[i][j]= matriz[i][j];
         		fila.addView(matriz[i][j],40,40);
