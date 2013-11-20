@@ -72,7 +72,9 @@ public class Juego extends Activity {
         		fila.addView(matriz[i][j],40,40);
         		c.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+                    	
                    	 c.descubrirAdyacentes(c, matriz, ANCHO, ALTO);
+                   //	c.setPressed(true);
                   
                     }
                 });
