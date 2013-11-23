@@ -13,37 +13,35 @@
     <Button
         android:id="@+id/newgameB"
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="106dp"
         android:layout_height="wrap_content"
-        android:text="New Game" 
-        android:onClick="sendMessage"/>
-
-    <Button
-        android:id="@+id/dificultad"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Difficulty" />
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:onClick="sendMessage"
+        android:text="New Game" />
 
     <Button
         android:id="@+id/highscoresB"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="High Scores" />
 
     <Button
         android:id="@+id/exitB"
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="106dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Exit" />
 
     <Button
         android:id="@+id/creditsB"
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="106dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Credits" />
 
 </LinearLayout>

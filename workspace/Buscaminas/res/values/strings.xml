@@ -9,5 +9,10 @@
     <string name="nombre1">Edison Sánchez</string>
     <string name="nombre2">Adrián Aguilar</string>
     <string name="nombre3">Kevin Filella</string>
+    <string name="dificultad">Dficultad</string>
+    <string name="facil">Facil</string>
+    <string name="dificil">Dificil</string>
+    <string name="medio">Medio</string>
+    <string name="personalizado">Personalizado</string>
 
 </resources>

@@ -33,6 +33,11 @@
             android:label="@string/credito" >
             </activity>
             
+        <activity
+            android:name="Dificultad"
+            android:label="@string/dificultad" >
+            </activity>
+            
     </application>
 
 </manifest>

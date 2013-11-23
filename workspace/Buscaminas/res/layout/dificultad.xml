@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+   	    android:layout_height="match_parent"
+   	     android:background="@drawable/fondo" >
+
+         <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp" >
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="210dp"
+                android:text="Button" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Seleccione la Dificultad"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/facil"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="70dp"
+            android:text="@string/facil" />
+
+        <Button
+            android:id="@+id/medio"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="70dp"
+            android:text="@string/medio" />
+
+        <Button
+            android:id="@+id/dificil"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="70dp"
+            android:text="@string/dificil" />
+
+        <Button
+            android:id="@+id/personalizado"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:text="@string/personalizado" />
+    </LinearLayout>
+     
+    </TableLayout>
+    
+
+
+

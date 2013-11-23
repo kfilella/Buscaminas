@@ -2,8 +2,10 @@ package com.example.buscaminas;
 
 import com.example.buscaminas.R;
 
+import android.R.string;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -13,7 +15,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class Buscaminas extends Activity implements OnClickListener {
-	
+	int dificultad= 5;
+	Juego j;
 	
 
     @Override
@@ -25,8 +28,6 @@ public class Buscaminas extends Activity implements OnClickListener {
         clickExit.setOnClickListener(this);
         View clickCredits = findViewById(R.id.creditsB);
         clickCredits.setOnClickListener(this);
-        View clickDiff = findViewById(R.id.dificultad);
-        clickDiff.setOnClickListener(this);
         View clickHighSc = findViewById(R.id.highscoresB);
         clickHighSc.setOnClickListener(this);
         View clickNewGame = findViewById(R.id.newgameB);
@@ -59,18 +60,12 @@ public class Buscaminas extends Activity implements OnClickListener {
 	    	 startActivity(j);
     	}
     	
-    	if(view.getId()==findViewById(R.id.dificultad).getId())
-    	{   	
-    		AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-        	dialog.setTitle("Difficulty");
-        	dialog.setMessage("Falta implementar =:D");
-        	dialog.show();
-    	}
+    	    	
     	
     	if(view.getId()==findViewById(R.id.newgameB).getId())
     	{   	
-	    	Intent i= new Intent(this,Juego.class);
-	       	startActivity(i);
+    		startActivity(new Intent(this, Dificultad.class));
+    		
     	}
     	
     	if(view.getId()==findViewById(R.id.highscoresB).getId())
