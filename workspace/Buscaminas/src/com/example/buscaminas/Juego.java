@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import com.example.buscaminas.R;
 import com.example.buscaminas.R.drawable;
 
+import android.R.integer;
 import android.R.layout;
 import android.app.Activity;
 import android.graphics.Color;
@@ -33,11 +34,12 @@ import android.widget.Toast;
 
 public class Juego extends Activity {
 	private TextView tiempo;
-	private TextView puntaje;
+	private TextView puntaje,mina;
 	TableLayout tablero;
 	private Celda n1;
 	Buscaminas b=new Buscaminas();
 	LinearLayout layouttiempo;
+	ImageButton bandera;
 	Chronometer tiempo1;
 	int ancho=0,alto=0;
 	int minas=0;
@@ -54,16 +56,21 @@ public class Juego extends Activity {
         alto=datos.getInt("dif1");
         minas=datos.getInt("minas");
         layouttiempo=(LinearLayout)this.findViewById(R.id.layouttiempo);
+        bandera=(ImageButton)this.findViewById(R.id.bandera);
         tiempo1 = new Chronometer(this);
         tiempo1.start();
         showElapsedTime();
         layouttiempo.addView(tiempo1);
+        layouttiempo.setWeightSum((float) 1.0);
         tiempo=(TextView)this.findViewById(R.id.tiempo);
-        tiempo.setText("Tiempo:");
+        tiempo.setText("       Tiempo:     ");
         tiempo.setTextColor(Color.GREEN);
-
+        mina= (TextView)this.findViewById(R.id.minasss);
+        mina.setText("        "+Integer.toString(minas));
+        
+        
         puntaje=(TextView)this.findViewById(R.id.puntaje);
-        puntaje.setText("Bombas:");
+        puntaje.setText("Minas:");
         puntaje.setTextColor(Color.GREEN);
        
         
@@ -223,7 +230,7 @@ public class Juego extends Activity {
         		
         		matriz[i][j] = c;
         		
-        		fila.addView(matriz[i][j],40,40);
+        		fila.addView(matriz[i][j],50,50);
         	}
         	
         	tablero.addView(fila);
