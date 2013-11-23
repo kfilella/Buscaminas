@@ -3,8 +3,20 @@
         android:layout_width="match_parent"
    	    android:layout_height="match_parent"
    	     android:background="@drawable/fondo" >
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:fillViewport= "true">
 
-         <LinearLayout
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true" >
+
+                <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -15,13 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp" >
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="210dp"
-                android:text="Button" />
         </LinearLayout>
 
         <TextView
@@ -63,6 +68,10 @@
             android:layout_marginLeft="70dp"
             android:text="@string/personalizado" />
     </LinearLayout>
+            </HorizontalScrollView>
+
+        </ScrollView>
+         
      
     </TableLayout>
     
