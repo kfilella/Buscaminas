@@ -10,16 +10,22 @@ import com.example.buscaminas.R.drawable;
 
 import android.R.integer;
 import android.R.layout;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.DragShadowBuilder;
+import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.GridLayout;
@@ -32,6 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+@SuppressLint("NewApi")
 public class Juego extends Activity {
 	private TextView tiempo;
 	private TextView puntaje,mina;
@@ -43,8 +50,22 @@ public class Juego extends Activity {
 	Chronometer tiempo1;
 	int ancho=0,alto=0;
 	int minas=0;
+	Celda matriz[][];
 	
-	
+	@SuppressLint("NewApi")
+	private final class MyTouchListener implements OnTouchListener {
+		  public boolean onTouch(View view, MotionEvent motionEvent) {
+		    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+		      ClipData data = ClipData.newPlainText("", "");
+		      DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+		      view.startDrag(data, shadowBuilder, view, 0);
+		     // view.setVisibility(View.INVISIBLE);
+		      return true;
+		    } else {
+		    return false;
+		    }
+		  }
+		} 
 	
 		
     @Override
@@ -57,6 +78,8 @@ public class Juego extends Activity {
         minas=datos.getInt("minas");
         layouttiempo=(LinearLayout)this.findViewById(R.id.layouttiempo);
         bandera=(ImageButton)this.findViewById(R.id.bandera);
+        bandera.setOnTouchListener(new MyTouchListener());
+        bandera.setOnDragListener(new MyDragListener());
         tiempo1 = new Chronometer(this);
         tiempo1.start();
         showElapsedTime();
@@ -75,7 +98,7 @@ public class Juego extends Activity {
        
         
         tablero=(TableLayout)this.findViewById(R.id.tabla);
-        Celda matriz[][] = new Celda[ancho][alto];
+        matriz = new Celda[ancho][alto];
         int matrizminas[][] = new int[ancho][alto];
        
         for (int i = 0; i < ancho; i++) {
@@ -143,11 +166,14 @@ public class Juego extends Activity {
  					
  					@Override
 					public boolean onTouch(View arg0, MotionEvent arg1) {
+ 						Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
 						ImageButton cara = (ImageButton) findViewById(R.id.imagecara);
  						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
- 							cara.setPressed(true);
- 						}else //if(event.getAction() == MotionEvent.ACTION_UP)
- 							cara.setPressed(false);
+ 							cara.setImageDrawable(d1);
+ 							//setPressed(true);
+ 						}else 
+ 							if(arg1.getAction() == MotionEvent.ACTION_UP)
+ 							cara.setImageDrawable(getResources().getDrawable(drawable.download));
  						return false;
 						
 					}
@@ -242,6 +268,54 @@ public class Juego extends Activity {
         
 
     }
+    
+    class MyDragListener implements OnDragListener {
+    	  Drawable enterShape = getResources().getDrawable(R.drawable.bomba);
+    	 // Drawable normalShape = getResources().getDrawable(R.drawable.shape);
+    	  
+    	 
+
+		@Override
+		public boolean onDrag(View v, DragEvent event) {
+			int action = event.getAction();
+    	    switch (event.getAction()) {
+    	    case DragEvent.ACTION_DRAG_STARTED:
+    	    // do nothing
+    	      break;
+    	    case DragEvent.ACTION_DRAG_ENTERED:
+    	      //((ImageButton) v).setImageDrawable(enterShape);
+    	      break;
+    	    case DragEvent.ACTION_DRAG_EXITED:        
+    	    	((ImageButton) v).setImageDrawable(enterShape);
+    	      break;
+    	    case DragEvent.ACTION_DROP:
+    	      // Dropped, reassign View to ViewGroup
+    	     /* View view = (View) event.getLocalState();
+    	      ViewGroup owner = (ViewGroup) view.getParent();
+    	      owner.removeView(view);
+    	      LinearLayout container = (LinearLayout) v;
+    	      container.addView(view);
+    	      view.setVisibility(View.VISIBLE);*/
+    	      break;
+    	    case DragEvent.ACTION_DRAG_ENDED:
+    	    	event.getX();
+    	    	event.getY();
+    	    	for (int i = 0; i < ancho; i++) {
+    	          	for (int j=0; j<alto; j++){
+    	          		matriz[i][j].getX() ;
+    	          		matriz[i][j].getY();
+    	          		
+    	          	}
+    	          }
+    	    	((ImageButton) v).setImageDrawable(enterShape);
+    	      default:
+    	      break;
+    	    }
+    	    return true;
+		}
+    	}
+    
+    
     public void onClick(View view) {
         ((Button) view).setText("*");
         ((Button) view).setEnabled(false);
