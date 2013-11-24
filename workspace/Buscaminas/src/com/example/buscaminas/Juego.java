@@ -99,7 +99,7 @@ public class Juego extends Activity {
         
         tablero=(TableLayout)this.findViewById(R.id.tabla);
         matriz = new Celda[ancho][alto];
-        int matrizminas[][] = new int[ancho][alto];
+        final int matrizminas[][] = new int[ancho][alto];
        
         for (int i = 0; i < ancho; i++) {
         	for (int j=0; j<alto; j++){
@@ -198,11 +198,13 @@ public class Juego extends Activity {
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.vacia);
                             c.setImageDrawable(d);
+                            
              			}
              			if(((Celda) v).valor==1){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.uno);
                             c.setImageDrawable(d);
+                            c.setPressed(true);
              			}
              			if(((Celda) v).valor==2){
              				//c.setBackgroundColor(Color.RED);
@@ -248,18 +250,18 @@ public class Juego extends Activity {
                     	//Drawable d = getResources().getDrawable(drawable.tierra);
                     	//((Celda) v).setImageDrawable(d);
                         
-                   	// c.descubrirAdyacentes(c, matriz, d, d);
+                   	c.descubrirAdyacentes(ancho,alto,matriz);
                     	
                   
                     }
                 });
         		
         		matriz[i][j] = c;
-        		
         		fila.addView(matriz[i][j],50,50);
         	}
         	
         	tablero.addView(fila);
+        	
     	}
         
         
