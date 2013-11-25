@@ -92,14 +92,14 @@
                 android:layout_height="match_parent"
                 android:fillViewport="true" >
 
-                <TableLayout
+                <GridLayout
                     android:id="@+id/tabla"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="left|center"
                     android:layout_weight="1" >
 
-                </TableLayout>
+                </GridLayout>
             </HorizontalScrollView>
 
         </ScrollView>

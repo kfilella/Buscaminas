@@ -42,7 +42,7 @@ import android.widget.Toast;
 public class Juego extends Activity {
 	private TextView tiempo;
 	private TextView puntaje,mina;
-	TableLayout tablero;
+	GridLayout tablero;
 	private Celda n1;
 	Buscaminas b=new Buscaminas();
 	LinearLayout layouttiempo;
@@ -97,7 +97,7 @@ public class Juego extends Activity {
         puntaje.setTextColor(Color.GREEN);
        
         
-        tablero=(TableLayout)this.findViewById(R.id.tabla);
+        tablero=(GridLayout)this.findViewById(R.id.tabla);
         matriz = new Celda[ancho][alto];
         final int matrizminas[][] = new int[ancho][alto];
        
@@ -157,9 +157,10 @@ public class Juego extends Activity {
        }
         
         
-        
+        tablero.setRowCount(alto);
+        tablero.setColumnCount(ancho);
         for (int i = 0; i < ancho; i++) {
-        	TableRow fila = new TableRow(this);
+        	//TableRow fila = new TableRow(this);
         	for (int j=0; j<alto; j++){
         		final Celda c =  new Celda(this,i,j,0);	
         		 c.setOnTouchListener(new OnTouchListener() {
@@ -257,11 +258,8 @@ public class Juego extends Activity {
                 });
         		
         		matriz[i][j] = c;
-        		fila.addView(matriz[i][j],50,50);
+        		tablero.addView((View)matriz[i][j]);
         	}
-        	
-        	tablero.addView(fila);
-        	
     	}
         
         
