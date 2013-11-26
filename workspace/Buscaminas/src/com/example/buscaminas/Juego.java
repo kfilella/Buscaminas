@@ -172,13 +172,34 @@ public class Juego extends Activity {
  					@Override
 					public boolean onTouch(View arg0, MotionEvent arg1) {
  						Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
+ 						Drawable d2 = getResources().getDrawable(drawable.caramuerta);
 						ImageButton cara = (ImageButton) findViewById(R.id.imagecara);
  						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
- 							cara.setImageDrawable(d1);
+ 							if (c.valor==11){
+ 								cara.setImageDrawable(d2);
+ 								 for (int i = 0; i < ancho; i++) {
+ 						        	for (int j=0; j<alto; j++){
+ 						        		if(matrizminas[i][j]==11 && matriz[i][j].open==false){
+ 						        			Drawable d = getResources().getDrawable(drawable.bomba);
+ 				                            matriz[i][j].setImageDrawable(d);
+ 						        		}
+ 						        	}
+ 								 }
+ 						        	
+ 							}else{
+ 								cara.setImageDrawable(d1);
+ 							}
+ 							
+ 							
  							//setPressed(true);
  						}else 
  							if(arg1.getAction() == MotionEvent.ACTION_UP)
- 							cara.setImageDrawable(getResources().getDrawable(drawable.download));
+ 								if (c.valor==11){
+ 	 								//cara.setImageDrawable(d2);
+ 	 							}else{
+ 	 								cara.setImageDrawable(getResources().getDrawable(drawable.download));
+ 	 							}
+ 							
  						return false;
 						
 					}
@@ -188,6 +209,7 @@ public class Juego extends Activity {
          			//c.setBackgroundColor(Color.DKGRAY);
          			Drawable d = getResources().getDrawable(drawable.tierra);
                     c.setImageDrawable(d);
+                    
          			//c.setEnabled(false);
          		}else{
          			c.valor=matrizminas[i][j];
@@ -203,53 +225,63 @@ public class Juego extends Activity {
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.vacia);
                             c.setImageDrawable(d);
+                            c.open=true;
                             
              			}
              			if(((Celda) v).valor==1){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.uno);
                             c.setImageDrawable(d);
+                            c.open=true;
                             //c.setPressed(true);
              			}
              			if(((Celda) v).valor==2){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.dos);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==3){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.tres);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==4){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.cuatro);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==5){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.cinco);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==6){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.seis);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==7){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.siete);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==8){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.ocho);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
              			if(((Celda) v).valor==11){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.bomba);
                             c.setImageDrawable(d);
+                            c.open=true;
              			}
                     	
                     	//Drawable d = getResources().getDrawable(drawable.tierra);
