@@ -160,7 +160,6 @@ public class Juego extends Activity {
              
            }
         
-        
         tablero.setRowCount(alto);
         tablero.setColumnCount(ancho);
         for (int i = 0; i < ancho; i++) {
