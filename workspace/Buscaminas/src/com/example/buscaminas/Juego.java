@@ -205,7 +205,7 @@ public class Juego extends Activity {
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.uno);
                             c.setImageDrawable(d);
-                            c.setPressed(true);
+                            //c.setPressed(true);
              			}
              			if(((Celda) v).valor==2){
              				//c.setBackgroundColor(Color.RED);
@@ -251,7 +251,7 @@ public class Juego extends Activity {
                     	//Drawable d = getResources().getDrawable(drawable.tierra);
                     	//((Celda) v).setImageDrawable(d);
                         
-                   	c.descubrirAdyacentes(matriz,ancho,alto);
+                   	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
                     	
                   
                     }
