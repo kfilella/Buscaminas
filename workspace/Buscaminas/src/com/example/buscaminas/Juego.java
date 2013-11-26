@@ -116,7 +116,7 @@ public class Juego extends Activity {
         	l++;
         }
         
-        for (int i = 0; i < ancho; i++) {
+        for (int i = 0; i <ancho; i++) {
         	for (int j=0; j<alto; j++){
         		int cont=0;
         		if(matrizminas[i][j]!=11){
@@ -251,7 +251,7 @@ public class Juego extends Activity {
                     	//Drawable d = getResources().getDrawable(drawable.tierra);
                     	//((Celda) v).setImageDrawable(d);
                         
-                   	c.descubrirAdyacentes(ancho,alto,matriz);
+                   	c.descubrirAdyacentes(matriz,ancho,alto);
                     	
                   
                     }
