@@ -85,22 +85,22 @@ public class Celda extends ImageButton {
 	    		if(this.valor==0 && this.open == false){ //si celda esta vacia
 		    			this.setImageDrawable(getResources().getDrawable(drawable.vacia)); //descubre celda vacia
 		    			this.open = true;
-		    			//if(this.posx+1<=ancho && this.posy+1<=alto)
-		    			//	celdas[this.posx+1][this.posy+1].descubrirAdyacentes(ancho,alto,celdas);
+		    			if(this.posx+1<=ancho && this.posy+1<=alto)
+		    				celdas[this.posx+1][this.posy+1].descubrirAdyacentes(ancho,alto,celdas);
 		    			if(this.posx+1<=ancho)
 		    				celdas[this.posx+1][this.posy].descubrirAdyacentes(ancho,alto,celdas);
 		    			if(this.posy+1<=alto)
 		    				celdas[this.posx][this.posy+1].descubrirAdyacentes(ancho,alto,celdas);
-		    			//if(this.posx-1>=0 && this.posy-1>=0)
-		    			//	celdas[this.posx-1][this.posy-1].descubrirAdyacentes(ancho,alto,celdas);
+		    			if(this.posx-1>=0 && this.posy-1>=0)
+		    				celdas[this.posx-1][this.posy-1].descubrirAdyacentes(ancho,alto,celdas);
 		    			if(this.posx-1>=0)
 		        			celdas[this.posx-1][this.posy].descubrirAdyacentes(ancho,alto,celdas);        				
 		    			if(this.posy-1>=0)    				
 		    			 	celdas[this.posx][this.posy-1].descubrirAdyacentes(ancho,alto,celdas);
-		    			//if(this.posx-1>=0 && this.posy+1<=alto)
-		    			//	celdas[this.posx-1][this.posy+1].descubrirAdyacentes(ancho,alto,celdas);
-		    			//if(this.posx+1<=ancho && this.posy-1>=0)
-		    			//	celdas[this.posx+1][this.posy-1].descubrirAdyacentes(ancho,alto,celdas);
+		    			if(this.posx-1>=0 && this.posy+1<=alto)
+		    				celdas[this.posx-1][this.posy+1].descubrirAdyacentes(ancho,alto,celdas);
+		    			if(this.posx+1<=ancho && this.posy-1>=0)
+		    				celdas[this.posx+1][this.posy-1].descubrirAdyacentes(ancho,alto,celdas);
 		    		
 	    		}
         	}

@@ -224,7 +224,6 @@ public class Juego extends Activity {
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.vacia);
                             c.setImageDrawable(d);
-                            c.open=true;
                             
              			}
              			if(((Celda) v).valor==1){
