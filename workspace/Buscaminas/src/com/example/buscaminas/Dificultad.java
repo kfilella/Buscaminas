@@ -32,7 +32,7 @@ public class Dificultad extends Activity implements OnClickListener  {
 	Button personalizado;
 	int fac=8,facminas=10;
 	int med=16,medminas=40;
-	int ancho=16, alto=30,difminas=99;
+	int ancho=20, alto=20,difminas=99;
 	int a=4,b=4,c=0;
 	
 	
@@ -96,8 +96,9 @@ public class Dificultad extends Activity implements OnClickListener  {
     	{   	
     		Intent i= new Intent(this,Juego.class);
     		i.putExtra("dif",ancho );
-    		i.putExtra("dif1", alto);
-    		i.putExtra("minas", difminas);
+    		i.putExtra("dif1",alto);
+    		i.putExtra("minas",difminas);
+    	
 	       	startActivity(i);
         		
         	

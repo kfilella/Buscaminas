@@ -117,44 +117,48 @@ public class Juego extends Activity {
         }
         
         for (int i = 0; i <ancho; i++) {
-        	for (int j=0; j<alto; j++){
-        		int cont=0;
-        		if(matrizminas[i][j]!=11){
-        			if(i>=1 && (j+1)<alto && j>=1){
-        				if(matrizminas[i-1][j-1]==11)
-        			   cont++;
-        				if(matrizminas[i-1][j]==11)
-        				cont++;
-        				if(matrizminas[i-1][j+1]==11)
-        				cont++;
-        			
-        		}
-        		if(j>1  && (i+1)<ancho ){
-        			
-         			if(matrizminas[i][j-1]==11)
-         				cont++;
-         			if(matrizminas[i+1][j-1]==11)
-         				cont++;
-        			
-        		}
-        		if((i+1)<ancho && (j+1)<alto){
-        			if(matrizminas[i+1][j]==11)
-         				cont++;
-         			if(matrizminas[i+1][j+1]==11)
-         				cont++;
-        			
-        		}
-        		if((j+1)<alto  && (i+1)<ancho ){
-        			if(matrizminas[i][j+1]==11)
-         				cont++;
-         			
-        			
-        		}
-        		matrizminas[i][j]=cont;
-        	}
-        		
-        }
-       }
+            for (int j=0; j<alto; j++){
+             int cont=0;
+             
+             if(matrizminas[i][j]!=11){
+           if(i-1>=0 && j-1>=0){
+               if(matrizminas[i-1][j-1]==11)
+                 cont++;
+           }
+           if(i-1>=0){
+               if(matrizminas[i-1][j]==11)
+               cont++;
+           }
+           if(i-1>=0 && j+1<alto){
+               if(matrizminas[i-1][j+1]==11)
+               cont++;
+              }
+           if(i+1<ancho && j-1>=0){
+               if(matrizminas[i+1][j-1]==11)
+                 cont++;
+           }
+           if(i+1<ancho && j+1<alto){
+               if(matrizminas[i+1][j+1]==11)
+               cont++;
+           }
+           if(j+1<alto){
+               if(matrizminas[i][j+1]==11)
+               cont++;
+              }
+           if(i+1<ancho){
+               if(matrizminas[i+1][j]==11)
+                 cont++;
+           }
+           if(j-1>=0){
+               if(matrizminas[i][j-1]==11)
+               cont++;
+           }
+           matrizminas[i][j]=cont;
+             }
+               
+            }
+             
+           }
         
         
         tablero.setRowCount(alto);
