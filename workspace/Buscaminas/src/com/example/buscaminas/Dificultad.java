@@ -4,6 +4,8 @@ package com.example.buscaminas;
 
 import java.util.ArrayList;
 
+import com.example.buscaminas.R.drawable;
+
 import android.R.layout;
 import android.R.string;
 import android.annotation.SuppressLint;
@@ -18,6 +20,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
@@ -46,20 +49,16 @@ public class Dificultad extends Activity implements OnClickListener  {
         
         facil=(Button)findViewById(R.id.facil);
         facil.setOnClickListener( this);
-        facil.setBackgroundColor(Color.RED);
-        facil.setTextColor(Color.GRAY);
+        facil.setBackground(getResources().getDrawable(drawable.tierra));
         medio=(Button)findViewById(R.id.medio);
         medio.setOnClickListener(this);
-        medio.setBackgroundColor(Color.RED);
-        medio.setTextColor(Color.GRAY);
+        medio.setBackground(getResources().getDrawable(drawable.tierra));
         dificil=(Button)findViewById(R.id.dificil);
         dificil.setOnClickListener(this);
-        dificil.setBackgroundColor(Color.RED);
-        dificil.setTextColor(Color.GRAY);
+        dificil.setBackground(getResources().getDrawable(drawable.tierra));
         personalizado=(Button)findViewById(R.id.personalizado);
         personalizado.setOnClickListener(this);
-        personalizado.setBackgroundColor(Color.RED);
-        personalizado.setTextColor(Color.GRAY);
+        personalizado.setBackground(getResources().getDrawable(drawable.tierra));
         
                
 	}

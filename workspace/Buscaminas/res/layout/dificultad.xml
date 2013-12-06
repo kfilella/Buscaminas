@@ -35,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Seleccione la Dificultad"
+            android:gravity="center"
+            android:textStyle="bold"
             android:textSize="25sp" />
 
         <Button
@@ -43,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="70dp"
+            android:gravity="center"
             android:text="@string/facil" />
 
         <Button
@@ -51,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="70dp"
+            android:gravity="center"
             android:text="@string/medio" />
 
         <Button
@@ -59,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="70dp"
+            android:gravity="center"
             android:text="@string/dificil" />
 
         <Button
@@ -66,6 +71,7 @@
             android:layout_width="172dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
+            android:gravity="center"
             android:text="@string/personalizado" />
     </LinearLayout>
             </HorizontalScrollView>

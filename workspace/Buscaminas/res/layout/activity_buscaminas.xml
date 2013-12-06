@@ -21,40 +21,52 @@
 			    android:paddingRight="@dimen/activity_horizontal_margin"
 			    android:paddingTop="@dimen/activity_vertical_margin"
 			    tools:context=".Buscaminas" >
+
+				<ImageView
+				    android:id="@+id/imageView1"
+				    android:layout_width="274dp"
+				    android:layout_height="wrap_content"
+				    android:alpha="0.5"
+				    android:layout_gravity="center"
+				    android:src="@drawable/title" />
 			            
-			    <Button
+			    <ImageButton
 			        android:id="@+id/newgameB"
 			        style="?android:attr/buttonStyleSmall"
-			        android:layout_width="106dp"
+			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_gravity="center"
 			        android:layout_marginTop="100dp"
 			        android:onClick="sendMessage"
-			        android:text="New Game" />
-			
-			    <Button
+			        android:alpha="0.5"
+			        android:background="@drawable/newgamebutton" />
+			<View android:layout_width="2dip" android:layout_height="2dip"/>
+			    <ImageButton
 			        android:id="@+id/highscoresB"
 			        style="?android:attr/buttonStyleSmall"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_gravity="center"
-			        android:text="High Scores" />
-			
-			    <Button
+			        android:alpha="0.5"
+			        android:background="@drawable/highscoresbutton" />
+			<View android:layout_width="2dip" android:layout_height="2dip"/>
+			    <ImageButton
 			        android:id="@+id/exitB"
 			        style="?android:attr/buttonStyleSmall"
-			        android:layout_width="106dp"
+			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_gravity="center"
-			        android:text="Exit" />
-			
-			    <Button
+			        android:alpha="0.5"
+			        android:background="@drawable/exitbutton" />
+			<View android:layout_width="2dip" android:layout_height="2dip"/>
+			    <ImageButton
 			        android:id="@+id/creditsB"
 			        style="?android:attr/buttonStyleSmall"
-			        android:layout_width="106dp"
+			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
+			        android:alpha="0.5"
 			        android:layout_gravity="center"
-			        android:text="Credits" />
+			        android:background="@drawable/creditsbutton" />
 			
 			</LinearLayout>
 	</HorizontalScrollView>
