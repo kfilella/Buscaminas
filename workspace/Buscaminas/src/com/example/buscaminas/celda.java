@@ -15,12 +15,14 @@ public class Celda extends ImageButton {
         int posy;
         int valor;
         boolean open;
+        boolean bandera;
         public Celda(Context context, int posx, int posy, int val) {
                 super(context);
                 this.posx = posx;
                 this.posy = posy;
                 this.valor = 0;
-                boolean open = false;
+                this.open = false;
+                this.bandera = false;
         }/*
         public void descubrirAdyacentes(Celda[][] celdas,int ancho,int alto){
     		if(this.valor>0 && this.valor<11){ //si celda tiene numero asignado 1-8 descubre numero
@@ -62,7 +64,7 @@ public class Celda extends ImageButton {
         	}
         }*/
         public void descubrirAdyacentes(int ancho, int alto, Celda[][] celdas){
-        	if(this.valor>0 && this.valor<11){//si celda tiene numero asignado 1-8 descubre numero
+        	if(this.valor>0 && this.valor<11 && this.bandera==false){//si celda tiene numero asignado 1-8 descubre numero
 	    			this.open = true;
 	    			if(this.valor==1)
 	    				this.setImageDrawable(getResources().getDrawable(drawable.uno));
@@ -82,7 +84,7 @@ public class Celda extends ImageButton {
 	    				this.setImageDrawable(getResources().getDrawable(drawable.ocho));
 	    		}
 	    			
-	    		if(this.valor==0 && this.open == false){ //si celda esta vacia
+	    		if(this.valor==0 && this.open == false && this.bandera == false){ //si celda esta vacia
 		    			this.setImageDrawable(getResources().getDrawable(drawable.vacia)); //descubre celda vacia
 		    			this.open = true;
 		    			if(this.posx+1<=ancho && this.posy+1<=alto)

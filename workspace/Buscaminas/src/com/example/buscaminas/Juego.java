@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -170,7 +171,6 @@ public class Juego extends Activity implements OnClickListener{
         tablero.setRowCount(ancho);
         tablero.setColumnCount(alto);
         for (int i = 0; i < ancho; i++) {
-        	//TableRow fila = new TableRow(this);
         	for (int j=0; j<alto; j++){
         		final Celda c =  new Celda(this,i,j,0);	
         		 c.setOnTouchListener(new OnTouchListener() {
@@ -234,106 +234,122 @@ public class Juego extends Activity implements OnClickListener{
          			
          			
          		}
-        		 
+        		c.setOnLongClickListener(new OnLongClickListener() { 
+        	        @Override
+        	        public boolean onLongClick(View v) {
+        	        	if(((Celda) v).bandera==false && ((Celda) v).open==false){
+	        	        	c.setImageDrawable(getResources().getDrawable(drawable.band));
+	        	        	c.bandera=true;
+	        	            return true;
+        	        	}
+        	        	if(((Celda) v).bandera==true){
+	        	        	c.setImageDrawable(getResources().getDrawable(drawable.tierra));
+	        	        	c.bandera=false;
+	        	            return true;
+        	        	}
+        	        	return true;
+        	        }
+        	    });
         		c.setOnClickListener(new View.OnClickListener() {
         			
                     public void onClick(View v) {
-                    	
-                    	if(((Celda) v).valor==0){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.vacia);
-                            c.setImageDrawable(d);
-                            
-             			}
-             			if(((Celda) v).valor==1){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.uno);
-                            c.setImageDrawable(d);
-                            c.open=true;
-                            //c.setPressed(true);
-             			}
-             			if(((Celda) v).valor==2){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.dos);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==3){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.tres);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==4){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.cuatro);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==5){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.cinco);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==6){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.seis);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==7){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.siete);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==8){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.ocho);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-             			if(((Celda) v).valor==11){
-             				//c.setBackgroundColor(Color.RED);
-             				Drawable d = getResources().getDrawable(drawable.bomba);
-                            c.setImageDrawable(d);
-                            c.open=true;
-             			}
-                    	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
-                    	int contad = 0;
-                    	int num=0;
-            			for (int i = 0; i < ancho; i++) {
-            	        	for (int j=0; j<alto; j++){
-            	        		if(matriz[i][j].valor < 11){
-            	        		num++;
-            					if(matriz[i][j].open== true){
-            						contad++;
-            					}
-            	        	  }
-            				}
-            			}
-            			if(contad==num){
-            				AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
-								TextView myMsg = new TextView(Juego.this);
-								myMsg.setText("FELICITACIONES HAS GANADO");
-								myMsg.setGravity(Gravity.CENTER);
-								dialog.setView(myMsg);
-								dialog.show();
-								Drawable d = getResources().getDrawable(drawable.caragafas);
-	                            cara.setImageDrawable(d);
-            			}else{
-            				contad=0;
-            				num=0;
-            			}
-                    	
-                  
+                    	if(((Celda) v).bandera==false){
+	                    	if(((Celda) v).valor==0){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.vacia);
+	                            c.setImageDrawable(d);
+	                            
+	             			}
+	             			if(((Celda) v).valor==1){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.uno);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	                            //c.setPressed(true);
+	             			}
+	             			if(((Celda) v).valor==2){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.dos);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==3){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.tres);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==4){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.cuatro);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==5){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.cinco);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==6){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.seis);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==7){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.siete);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==8){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.ocho);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	             			if(((Celda) v).valor==11){
+	             				//c.setBackgroundColor(Color.RED);
+	             				Drawable d = getResources().getDrawable(drawable.bomba);
+	                            c.setImageDrawable(d);
+	                            c.open=true;
+	             			}
+	                    	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
+	                    	int contad = 0;
+	                    	int num=0;
+	            			for (int i = 0; i < ancho; i++) {
+	            	        	for (int j=0; j<alto; j++){
+	            	        		if(matriz[i][j].valor < 11){
+	            	        		num++;
+	            					if(matriz[i][j].open== true){
+	            						contad++;
+	            					}
+	            	        	  }
+	            				}
+	            			}
+	            			if(contad==num){
+	            				AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+									TextView myMsg = new TextView(Juego.this);
+									myMsg.setText("Felicitaciones! Has ganado");
+									myMsg.setGravity(Gravity.CENTER);
+									dialog.setView(myMsg);
+									dialog.show();
+									Drawable d = getResources().getDrawable(drawable.caragafas);
+		                            cara.setImageDrawable(d);
+	            			}else{
+	            				contad=0;
+	            				num=0;
+	            			}
+	                    	
+	                  
+	                    }
                     }
-                });
-        		
-        		matriz[i][j] = c;
-        		tablero.addView((View)matriz[i][j]);
-        	}
+	                });
+	        		
+	        		matriz[i][j] = c;
+	        		tablero.addView((View)matriz[i][j]);
+	        	}
     	}
         
         
@@ -344,49 +360,37 @@ public class Juego extends Activity implements OnClickListener{
     }
     
     class MyDragListener implements OnDragListener {
-    	  Drawable enterShape = getResources().getDrawable(R.drawable.bomba);
+    	  Drawable enterShape = getResources().getDrawable(R.drawable.band);
     	 // Drawable normalShape = getResources().getDrawable(R.drawable.shape);
     	  
-    	 
-
-		@Override
-		public boolean onDrag(View v, DragEvent event) {
-			int action = event.getAction();
-    	    switch (event.getAction()) {
-    	    case DragEvent.ACTION_DRAG_STARTED:
-    	    // do nothing
-    	      break;
-    	    case DragEvent.ACTION_DRAG_ENTERED:
-    	      //((ImageButton) v).setImageDrawable(enterShape);
-    	      break;
-    	    case DragEvent.ACTION_DRAG_EXITED:        
-    	    	((ImageButton) v).setImageDrawable(enterShape);
-    	      break;
-    	    case DragEvent.ACTION_DROP:
-    	      // Dropped, reassign View to ViewGroup
-    	     /* View view = (View) event.getLocalState();
-    	      ViewGroup owner = (ViewGroup) view.getParent();
-    	      owner.removeView(view);
-    	      LinearLayout container = (LinearLayout) v;
-    	      container.addView(view);
-    	      view.setVisibility(View.VISIBLE);*/
-    	      break;
-    	    case DragEvent.ACTION_DRAG_ENDED:
-    	    	event.getX();
-    	    	event.getY();
-    	    	for (int i = 0; i < ancho; i++) {
-    	          	for (int j=0; j<alto; j++){
-    	          		matriz[i][j].getX() ;
-    	          		matriz[i][j].getY();
-    	          		
-    	          	}
-    	          }
-    	    	((ImageButton) v).setImageDrawable(enterShape);
-    	      default:
-    	      break;
-    	    }
-    	    return true;
-		}
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+                switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    //no action necessary
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    //no action necessary
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    //no action necessary
+                    break;
+                case DragEvent.ACTION_DROP:
+                	View view = (View) event.getLocalState();
+                	view.setVisibility(View.INVISIBLE);
+                	Celda dropTarget = (Celda) v;
+                	ImageButton dropped = (ImageButton) view;
+                	dropTarget.setImageDrawable(dropped.getDrawable());
+                	dropTarget.valor = 99;
+                    return true;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    //no action necessary
+                    break;
+                default:
+                    break;
+            }
+        return true;
+        }
     	}
     
   
