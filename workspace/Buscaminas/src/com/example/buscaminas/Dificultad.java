@@ -48,15 +48,19 @@ public class Dificultad extends Activity implements OnClickListener  {
         
         
         facil=(Button)findViewById(R.id.facil);
+        facil.setGravity(Gravity.CENTER);
         facil.setOnClickListener( this);
         facil.setBackground(getResources().getDrawable(drawable.tierra));
         medio=(Button)findViewById(R.id.medio);
+        medio.setGravity(Gravity.CENTER);
         medio.setOnClickListener(this);
         medio.setBackground(getResources().getDrawable(drawable.tierra));
         dificil=(Button)findViewById(R.id.dificil);
+        dificil.setGravity(Gravity.CENTER);
         dificil.setOnClickListener(this);
         dificil.setBackground(getResources().getDrawable(drawable.tierra));
         personalizado=(Button)findViewById(R.id.personalizado);
+        personalizado.setGravity(Gravity.CENTER);
         personalizado.setOnClickListener(this);
         personalizado.setBackground(getResources().getDrawable(drawable.tierra));
         
