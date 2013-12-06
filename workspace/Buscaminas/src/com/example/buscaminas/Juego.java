@@ -78,8 +78,8 @@ public class Juego extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.juego);
         Bundle datos = this.getIntent().getExtras();
-        ancho=datos.getInt("dif");
-        alto=datos.getInt("dif1");
+        ancho=datos.getInt("dif1");
+        alto=datos.getInt("dif");
         minas=datos.getInt("minas");
         layouttiempo=(LinearLayout)this.findViewById(R.id.layouttiempo);
         bandera=(ImageButton)this.findViewById(R.id.bandera);
@@ -167,8 +167,8 @@ public class Juego extends Activity implements OnClickListener{
              
            }
         
-        tablero.setRowCount(alto);
-        tablero.setColumnCount(ancho);
+        tablero.setRowCount(ancho);
+        tablero.setColumnCount(alto);
         for (int i = 0; i < ancho; i++) {
         	//TableRow fila = new TableRow(this);
         	for (int j=0; j<alto; j++){

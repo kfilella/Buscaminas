@@ -25,7 +25,7 @@
         <activity
             android:name="Juego"
             android:label="@string/actividad2" 
-            android:configChanges="orientation">
+            android:configChanges="keyboardHidden|orientation|screenSize">
             </activity>
             
          <activity

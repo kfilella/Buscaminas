@@ -32,7 +32,7 @@ public class Dificultad extends Activity implements OnClickListener  {
 	Button personalizado;
 	int fac=8,facminas=10;
 	int med=16,medminas=40;
-	int ancho=20, alto=20,difminas=99;
+	int ancho=30, alto=16,difminas=99;
 	int a=4,b=4,c=0;
 	
 	
@@ -95,7 +95,7 @@ public class Dificultad extends Activity implements OnClickListener  {
     	if(arg0.getId()==findViewById(R.id.dificil).getId())
     	{   	
     		Intent i= new Intent(this,Juego.class);
-    		i.putExtra("dif",ancho );
+    		i.putExtra("dif",ancho);
     		i.putExtra("dif1",alto);
     		i.putExtra("minas",difminas);
     	
@@ -129,11 +129,11 @@ public class Dificultad extends Activity implements OnClickListener  {
     	    text.setText("Personalizar"); 
      	    text.setPadding(10, 10, 10, 10);
     	    final TextView numancho=new TextView(this);
-    	    numancho.setText("4");
+    	    numancho.setText("10");
     	    final TextView numalto=new TextView(this); 
-    	    numalto.setText("4");
+    	    numalto.setText("6");
     	    final TextView numminas=new TextView(this); 
-    	    numminas.setText("2");
+    	    numminas.setText("20");
     	  
     	    
     	    SeekBar seek3=new SeekBar(this);
