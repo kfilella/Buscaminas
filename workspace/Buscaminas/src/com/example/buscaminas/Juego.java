@@ -182,24 +182,7 @@ public class Juego extends Activity implements OnClickListener{
 						
  						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
  							if (c.valor==11){
- 								cara.setImageDrawable(d2);
- 								 for (int i = 0; i < ancho; i++) {
- 						        	for (int j=0; j<alto; j++){
- 						        		matriz[i][j].setEnabled(false);
- 						        		if(matrizminas[i][j]==11 && matriz[i][j].open==false){
- 						        			Drawable d = getResources().getDrawable(drawable.bomba);
- 				                            matriz[i][j].setImageDrawable(d);
- 						        		}
- 						        	}
- 						        	
- 								 }
- 								AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
- 								TextView myMsg = new TextView(Juego.this);
- 								myMsg.setText("Has perdido");
- 								myMsg.setGravity(Gravity.CENTER);
- 								dialog.setView(myMsg);
- 								dialog.show();
- 						        	
+ 								cara.setImageDrawable(d2);	
  							}else{
  								cara.setImageDrawable(d1);
  							}
@@ -313,6 +296,22 @@ public class Juego extends Activity implements OnClickListener{
 	             				//c.setBackgroundColor(Color.RED);
 	             				Drawable d = getResources().getDrawable(drawable.bomba);
 	                            c.setImageDrawable(d);
+								 for (int i = 0; i < ancho; i++) {
+	 						        	for (int j=0; j<alto; j++){
+	 						        		matriz[i][j].setEnabled(false);
+	 						        		if(matrizminas[i][j]==11 && matriz[i][j].open==false){
+	 						        			Drawable d1 = getResources().getDrawable(drawable.bomba);
+	 				                            matriz[i][j].setImageDrawable(d1);
+	 						        		}
+	 						        	}
+	 						        	
+	 								 }
+	 								AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+	 								TextView myMsg = new TextView(Juego.this);
+	 								myMsg.setText("Has perdido");
+	 								myMsg.setGravity(Gravity.CENTER);
+	 								dialog.setView(myMsg);
+	 								dialog.show();
 	                            c.open=true;
 	             			}
 	                    	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
