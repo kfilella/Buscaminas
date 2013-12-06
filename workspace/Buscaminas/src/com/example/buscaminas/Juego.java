@@ -12,7 +12,9 @@ import android.R.integer;
 import android.R.layout;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -20,9 +22,11 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.DragEvent;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -39,7 +43,7 @@ import android.widget.Toast;
 
 
 @SuppressLint("NewApi")
-public class Juego extends Activity {
+public class Juego extends Activity implements OnClickListener{
 	private TextView tiempo;
 	private TextView puntaje,mina;
 	GridLayout tablero;
@@ -47,6 +51,7 @@ public class Juego extends Activity {
 	Buscaminas b=new Buscaminas();
 	LinearLayout layouttiempo;
 	ImageButton bandera;
+	ImageButton cara ;
 	Chronometer tiempo1;
 	int ancho=0,alto=0;
 	int minas=0;
@@ -88,6 +93,8 @@ public class Juego extends Activity {
         tiempo=(TextView)this.findViewById(R.id.tiempo);
         tiempo.setText("       Tiempo:     ");
         tiempo.setTextColor(Color.GREEN);
+        cara = (ImageButton) findViewById(R.id.imagecara);
+        cara.setOnClickListener(this);
         mina= (TextView)this.findViewById(R.id.minasss);
         mina.setText("        "+Integer.toString(minas));
         
@@ -108,12 +115,12 @@ public class Juego extends Activity {
         	}
        
         Random r = new Random();
-        for(int l=0; l<minas; l++ ){
+        for(int l=1; l<=minas; l++ ){
         int i=r.nextInt(ancho);
         int j=r.nextInt(alto);
         if(matrizminas[i][j]!=11)     matrizminas[i][j]=11;
         else
-        	l++;
+        	l--;
         }
         
         for (int i = 0; i <ancho; i++) {
@@ -172,18 +179,26 @@ public class Juego extends Activity {
 					public boolean onTouch(View arg0, MotionEvent arg1) {
  						Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
  						Drawable d2 = getResources().getDrawable(drawable.caramuerta);
-						ImageButton cara = (ImageButton) findViewById(R.id.imagecara);
+						
  						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
  							if (c.valor==11){
  								cara.setImageDrawable(d2);
  								 for (int i = 0; i < ancho; i++) {
  						        	for (int j=0; j<alto; j++){
+ 						        		matriz[i][j].setEnabled(false);
  						        		if(matrizminas[i][j]==11 && matriz[i][j].open==false){
  						        			Drawable d = getResources().getDrawable(drawable.bomba);
  				                            matriz[i][j].setImageDrawable(d);
  						        		}
  						        	}
+ 						        	
  								 }
+ 								AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+ 								TextView myMsg = new TextView(Juego.this);
+ 								myMsg.setText("Has perdido");
+ 								myMsg.setGravity(Gravity.CENTER);
+ 								dialog.setView(myMsg);
+ 								dialog.show();
  						        	
  							}else{
  								cara.setImageDrawable(d1);
@@ -192,6 +207,9 @@ public class Juego extends Activity {
  							
  							//setPressed(true);
  						}else 
+ 							if(arg1.getAction()==MotionEvent.ACTION_MOVE){
+ 								cara.setImageDrawable(getResources().getDrawable(drawable.download));
+ 							}
  							if(arg1.getAction() == MotionEvent.ACTION_UP)
  								if (c.valor==11){
  	 								//cara.setImageDrawable(d2);
@@ -205,7 +223,6 @@ public class Juego extends Activity {
  				});
         		 if(matrizminas[i][j]==11){
          			c.valor=11;
-         			//c.setBackgroundColor(Color.DKGRAY);
          			Drawable d = getResources().getDrawable(drawable.tierra);
                     c.setImageDrawable(d);
                     
@@ -219,7 +236,9 @@ public class Juego extends Activity {
          		}
         		 
         		c.setOnClickListener(new View.OnClickListener() {
+        			
                     public void onClick(View v) {
+                    	
                     	if(((Celda) v).valor==0){
              				//c.setBackgroundColor(Color.RED);
              				Drawable d = getResources().getDrawable(drawable.vacia);
@@ -281,11 +300,32 @@ public class Juego extends Activity {
                             c.setImageDrawable(d);
                             c.open=true;
              			}
-                    	
-                    	//Drawable d = getResources().getDrawable(drawable.tierra);
-                    	//((Celda) v).setImageDrawable(d);
-                        
-                   	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
+                    	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
+                    	int contad = 0;
+                    	int num=0;
+            			for (int i = 0; i < ancho; i++) {
+            	        	for (int j=0; j<alto; j++){
+            	        		if(matriz[i][j].valor < 11){
+            	        		num++;
+            					if(matriz[i][j].open== true){
+            						contad++;
+            					}
+            	        	  }
+            				}
+            			}
+            			if(contad==num){
+            				AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+								TextView myMsg = new TextView(Juego.this);
+								myMsg.setText("FELICITACIONES HAS GANADO");
+								myMsg.setGravity(Gravity.CENTER);
+								dialog.setView(myMsg);
+								dialog.show();
+								Drawable d = getResources().getDrawable(drawable.caragafas);
+	                            cara.setImageDrawable(d);
+            			}else{
+            				contad=0;
+            				num=0;
+            			}
                     	
                   
                     }
@@ -349,15 +389,24 @@ public class Juego extends Activity {
 		}
     	}
     
-    
-    public void onClick(View view) {
-        ((Button) view).setText("*");
-        ((Button) view).setEnabled(false);
-    }
+  
     private void showElapsedTime() {
         long elapsedMillis = SystemClock.elapsedRealtime() - tiempo1.getBase();            
         Toast.makeText(Juego.this, "Elapsed milliseconds: " + elapsedMillis, 
                 Toast.LENGTH_SHORT).show();
     }
+
+
+@Override
+public void onClick(View v) {
+	if(v.getId()==findViewById(R.id.imagecara).getId()){
+		
+		Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+	}
+	// TODO Auto-generated method stub
+	
+}
     
 }

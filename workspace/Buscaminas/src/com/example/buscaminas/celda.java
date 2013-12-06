@@ -62,8 +62,8 @@ public class Celda extends ImageButton {
         	}
         }*/
         public void descubrirAdyacentes(int ancho, int alto, Celda[][] celdas){
-        	//if(this.posx>=0 && this.posy>=0 && this.posx<=ancho && this.posy<=alto){
-	    		if(this.valor>0 && this.valor<11){ //si celda tiene numero asignado 1-8 descubre numero
+        	if(this.valor>0 && this.valor<11){//si celda tiene numero asignado 1-8 descubre numero
+	    			this.open = true;
 	    			if(this.valor==1)
 	    				this.setImageDrawable(getResources().getDrawable(drawable.uno));
 	    			if(this.valor==2)

@@ -138,7 +138,7 @@ public class Dificultad extends Activity implements OnClickListener  {
     	    
     	    SeekBar seek3=new SeekBar(this);
     	    seek3.setMax(200);
-    	    //seek3.setProgress(2);
+    	    seek3.setProgress(2);
     	    seek3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 				@Override
 				public void onProgressChanged(SeekBar seekBar, int progress,
