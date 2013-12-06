@@ -10,6 +10,7 @@ import com.example.buscaminas.R.drawable;
 
 import android.R.integer;
 import android.R.layout;
+import android.R.string;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -54,6 +55,8 @@ public class Juego extends Activity implements OnClickListener{
 	ImageButton bandera;
 	ImageButton cara ;
 	Chronometer tiempo1;
+	TextView tiempofinal;
+	CharSequence temfinal;
 	int ancho=0,alto=0;
 	int minas=0;
 	Celda matriz[][];
@@ -173,51 +176,19 @@ public class Juego extends Activity implements OnClickListener{
         for (int i = 0; i < ancho; i++) {
         	for (int j=0; j<alto; j++){
         		final Celda c =  new Celda(this,i,j,0);	
-        		 c.setOnTouchListener(new OnTouchListener() {
- 					
- 					@Override
-					public boolean onTouch(View arg0, MotionEvent arg1) {
- 						Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
- 						Drawable d2 = getResources().getDrawable(drawable.caramuerta);
-						
- 						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
- 							if (c.valor==11){
- 								cara.setImageDrawable(d2);	
- 							}else{
- 								cara.setImageDrawable(d1);
- 							}
- 							
- 							
- 							//setPressed(true);
- 						}else 
- 							if(arg1.getAction()==MotionEvent.ACTION_MOVE){
- 								cara.setImageDrawable(getResources().getDrawable(drawable.download));
- 							}
- 							if(arg1.getAction() == MotionEvent.ACTION_UP)
- 								if (c.valor==11){
- 	 								//cara.setImageDrawable(d2);
- 	 							}else{
- 	 								cara.setImageDrawable(getResources().getDrawable(drawable.download));
- 	 							}
- 							
- 						return false;
-						
-					}
- 				});
         		 if(matrizminas[i][j]==11){
          			c.valor=11;
          			Drawable d = getResources().getDrawable(drawable.tierra);
                     c.setImageDrawable(d);
                     
          			//c.setEnabled(false);
-         		}else{
-         			c.valor=matrizminas[i][j];
-         			Drawable d = getResources().getDrawable(drawable.tierra);
-                    c.setImageDrawable(d);
-         			
-         			
-         		}
-        		c.setOnLongClickListener(new OnLongClickListener() { 
+         			}else{
+         				c.valor=matrizminas[i][j];
+         				Drawable d = getResources().getDrawable(drawable.tierra);
+         				c.setImageDrawable(d);
+         			}	
+        		
+        		 c.setOnLongClickListener(new OnLongClickListener() { 
         	        @Override
         	        public boolean onLongClick(View v) {
         	        	if(((Celda) v).bandera==false && ((Celda) v).open==false){
@@ -236,9 +207,20 @@ public class Juego extends Activity implements OnClickListener{
         		c.setOnClickListener(new View.OnClickListener() {
         			
                     public void onClick(View v) {
+                    	//Drawable d4 = getResources().getDrawable(drawable.carasorprendida);
+                    	//Drawable d5= getResources().getDrawable(drawable.download);
+ 						//Drawable d2 = getResources().getDrawable(drawable.caramuerta);
+                    	/*if(((Celda) v).isPressed()){
+                    		if (c.valor==11){
+ 								cara.setImageDrawable(d2);	
+ 							}else{
+ 								cara.setImageDrawable(d4);
+ 							}
+                    	}else {
+                    		cara.setImageDrawable(d5);
+                    	}*/
                     	if(((Celda) v).bandera==false){
 	                    	if(((Celda) v).valor==0){
-	             				//c.setBackgroundColor(Color.RED);
 	             				Drawable d = getResources().getDrawable(drawable.vacia);
 	                            c.setImageDrawable(d);
 	                            
@@ -293,7 +275,6 @@ public class Juego extends Activity implements OnClickListener{
 	                            c.open=true;
 	             			}
 	             			if(((Celda) v).valor==11){
-	             				//c.setBackgroundColor(Color.RED);
 	             				Drawable d = getResources().getDrawable(drawable.bomba);
 	                            c.setImageDrawable(d);
 								 for (int i = 0; i < ancho; i++) {
@@ -309,12 +290,15 @@ public class Juego extends Activity implements OnClickListener{
 	 								AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
 	 								TextView myMsg = new TextView(Juego.this);
 	 								myMsg.setText("Has perdido");
+	 								tiempo1.stop();
 	 								myMsg.setGravity(Gravity.CENTER);
 	 								dialog.setView(myMsg);
 	 								dialog.show();
 	                            c.open=true;
 	             			}
-	                    	c.descubrirAdyacentes(ancho-1,alto-1,matriz);
+	                    	
+	             			
+	             		c.descubrirAdyacentes(ancho-1,alto-1,matriz);
 	                    	int contad = 0;
 	                    	int num=0;
 	            			for (int i = 0; i < ancho; i++) {
@@ -331,6 +315,8 @@ public class Juego extends Activity implements OnClickListener{
 	            				AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
 									TextView myMsg = new TextView(Juego.this);
 									myMsg.setText("Felicitaciones! Has ganado");
+									tiempo1.stop();
+									temfinal=tiempo1.getText();
 									myMsg.setGravity(Gravity.CENTER);
 									dialog.setView(myMsg);
 									dialog.show();
@@ -343,8 +329,38 @@ public class Juego extends Activity implements OnClickListener{
 	                    	
 	                  
 	                    }
+                    	
                     }
 	                });
+        		c.setOnTouchListener(new OnTouchListener() {
+					
+					@Override
+				public boolean onTouch(View arg0, MotionEvent arg1) {
+						Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
+						Drawable d2 = getResources().getDrawable(drawable.caramuerta);
+					
+						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
+							if (c.valor==11){
+								cara.setImageDrawable(d2);	
+							}else{
+								cara.setImageDrawable(d1);
+							}
+							
+							
+							//setPressed(true);
+						}else {
+							
+							if(arg1.getAction() == MotionEvent.ACTION_UP)
+								if (c.valor!=11){
+									cara.setImageDrawable(getResources().getDrawable(drawable.download));
+	 							}
+					}
+						return false;
+							
+					
+					
+				}
+				});
 	        		
 	        		matriz[i][j] = c;
 	        		tablero.addView((View)matriz[i][j]);
