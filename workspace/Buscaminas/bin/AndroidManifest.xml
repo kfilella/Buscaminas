@@ -38,6 +38,11 @@
             android:label="@string/dificultad" >
             </activity>
             
+        <activity
+            android:name="scores"
+            android:label="@string/scores" >
+            </activity>
+            
     </application>
 
 </manifest>

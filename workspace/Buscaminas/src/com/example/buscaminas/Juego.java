@@ -1,5 +1,8 @@
 package com.example.buscaminas;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -279,6 +282,7 @@ public class Juego extends Activity implements OnClickListener{
 									myMsg.setGravity(Gravity.CENTER);
 									dialog.setView(myMsg);
 									dialog.show();
+									onClickGuardar();
 									Drawable d = getResources().getDrawable(drawable.caragafas);
 		                            cara.setImageDrawable(d);
 									 for (int i = 0; i < ancho; i++)
@@ -327,6 +331,26 @@ public void onClick(View v) {
 	}
 	// TODO Auto-generated method stub
 	
+}
+public void onClickGuardar(){
+    String str = temfinal.toString();
+    try{
+        FileOutputStream fos = openFileOutput("textFile.txt", MODE_PRIVATE);
+        OutputStreamWriter osw = new OutputStreamWriter(fos);
+         
+        // Escribimos el String en el archivo
+        osw.write(str);
+        osw.flush();
+        osw.close();
+         
+        // Mostramos que se ha guardado
+        Toast.makeText(getBaseContext(), "Guardado", Toast.LENGTH_SHORT).show();
+         
+        
+    }catch (IOException ex){
+        ex.printStackTrace();
+    }
+     
 }
     
 }

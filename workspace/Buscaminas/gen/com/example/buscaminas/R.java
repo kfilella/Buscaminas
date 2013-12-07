@@ -53,7 +53,7 @@ public final class R {
         public static final int vacia=0x7f02001d;
     }
     public static final class id {
-        public static final int action_settings=0x7f080024;
+        public static final int action_settings=0x7f080025;
         public static final int bandera=0x7f080013;
         public static final int button1=0x7f080022;
         public static final int button2=0x7f080023;
@@ -80,6 +80,7 @@ public final class R {
         public static final int numminas=0x7f080021;
         public static final int personali=0x7f080019;
         public static final int personalizado=0x7f08000f;
+        public static final int prueba=0x7f080024;
         public static final int puntaje=0x7f080011;
         public static final int scrollView1=0x7f080000;
         public static final int seekBar1=0x7f08001a;
@@ -97,6 +98,7 @@ public final class R {
         public static final int dificultad=0x7f030002;
         public static final int juego=0x7f030003;
         public static final int personalizado=0x7f030004;
+        public static final int scores=0x7f030005;
     }
     public static final class menu {
         public static final int buscaminas=0x7f070000;
@@ -115,6 +117,7 @@ public final class R {
         public static final int nombre2=0x7f050006;
         public static final int nombre3=0x7f050007;
         public static final int personalizado=0x7f05000c;
+        public static final int scores=0x7f05000d;
     }
     public static final class style {
         /** 

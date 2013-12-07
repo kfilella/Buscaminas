@@ -70,10 +70,7 @@ public class Buscaminas extends Activity implements OnClickListener {
     	
     	if(view.getId()==findViewById(R.id.highscoresB).getId())
     	{   	
-    	AlertDialog dialog = new AlertDialog.Builder(Buscaminas.this).create();
-    	dialog.setTitle("High Scores");
-    	dialog.setMessage("Falta implementar =:D");
-    	dialog.show();
+    		startActivity(new Intent(this, scores.class));
     	}
     	if(view.getId()==findViewById(R.id.exitB).getId())
     	{

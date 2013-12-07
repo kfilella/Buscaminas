@@ -14,5 +14,6 @@
     <string name="dificil">Dificil</string>
     <string name="medio">Medio</string>
     <string name="personalizado">Personalizado</string>
+    <string name="scores">High Scores</string>
 
 </resources>
