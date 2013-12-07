@@ -281,6 +281,9 @@ public class Juego extends Activity implements OnClickListener{
 									dialog.show();
 									Drawable d = getResources().getDrawable(drawable.caragafas);
 		                            cara.setImageDrawable(d);
+									 for (int i = 0; i < ancho; i++)
+		 						        	for (int j=0; j<alto; j++)
+		 						        		matriz[i][j].setEnabled(false);
 	            			}else{
 	            				contad=0;
 	            				num=0;
