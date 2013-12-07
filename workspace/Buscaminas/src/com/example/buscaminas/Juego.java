@@ -49,7 +49,6 @@ public class Juego extends Activity implements OnClickListener{
 	private TextView tiempo;
 	private TextView puntaje,mina;
 	GridLayout tablero;
-	private Celda n1;
 	Buscaminas b=new Buscaminas();
 	LinearLayout layouttiempo;
 	ImageButton bandera;
@@ -86,9 +85,6 @@ public class Juego extends Activity implements OnClickListener{
         alto=datos.getInt("dif");
         minas=datos.getInt("minas");
         layouttiempo=(LinearLayout)this.findViewById(R.id.layouttiempo);
-        bandera=(ImageButton)this.findViewById(R.id.bandera);
-        bandera.setOnTouchListener(new MyTouchListener());
-        bandera.setOnDragListener(new MyDragListener());
         tiempo1 = new Chronometer(this);
         tiempo1.start();
         showElapsedTime();
@@ -112,82 +108,78 @@ public class Juego extends Activity implements OnClickListener{
         matriz = new Celda[ancho][alto];
         final int matrizminas[][] = new int[ancho][alto];
        
-        for (int i = 0; i < ancho; i++) {
+        for (int i = 0; i < ancho; i++){
         	for (int j=0; j<alto; j++){
         		matrizminas[i][j]=0;
         	}
-        	}
+    	}
        
         Random r = new Random();
         for(int l=1; l<=minas; l++ ){
-        int i=r.nextInt(ancho);
-        int j=r.nextInt(alto);
-        if(matrizminas[i][j]!=11)     matrizminas[i][j]=11;
-        else
-        	l--;
+	        int i=r.nextInt(ancho);
+	        int j=r.nextInt(alto);
+	        if(matrizminas[i][j]!=11)     
+	        	matrizminas[i][j]=11;
+	        else
+	        	l--;
         }
         
-        for (int i = 0; i <ancho; i++) {
-            for (int j=0; j<alto; j++){
-             int cont=0;
-             
-             if(matrizminas[i][j]!=11){
-           if(i-1>=0 && j-1>=0){
-               if(matrizminas[i-1][j-1]==11)
-                 cont++;
-           }
-           if(i-1>=0){
-               if(matrizminas[i-1][j]==11)
-               cont++;
-           }
-           if(i-1>=0 && j+1<alto){
-               if(matrizminas[i-1][j+1]==11)
-               cont++;
-              }
-           if(i+1<ancho && j-1>=0){
-               if(matrizminas[i+1][j-1]==11)
-                 cont++;
-           }
-           if(i+1<ancho && j+1<alto){
-               if(matrizminas[i+1][j+1]==11)
-               cont++;
-           }
-           if(j+1<alto){
-               if(matrizminas[i][j+1]==11)
-               cont++;
-              }
-           if(i+1<ancho){
-               if(matrizminas[i+1][j]==11)
-                 cont++;
-           }
-           if(j-1>=0){
-               if(matrizminas[i][j-1]==11)
-               cont++;
-           }
-           matrizminas[i][j]=cont;
-             }
-               
-            }
-             
-           }
+    	for (int i = 0; i <ancho; i++) {
+        	for (int j=0; j<alto; j++){
+        		int cont=0;
+        		if(matrizminas[i][j]!=11){
+				    if(i-1>=0 && j-1>=0){
+				        if(matrizminas[i-1][j-1]==11)
+				        cont++;
+				    }
+				    if(i-1>=0){
+				        if(matrizminas[i-1][j]==11)
+				        cont++;
+				    }
+				    if(i-1>=0 && j+1<alto){
+				        if(matrizminas[i-1][j+1]==11)
+				        cont++;
+				    }
+				    if(i+1<ancho && j-1>=0){
+				        if(matrizminas[i+1][j-1]==11)
+				        cont++;
+				    }
+				    if(i+1<ancho && j+1<alto){
+				    	if(matrizminas[i+1][j+1]==11)
+				    	cont++;
+				    }
+				    if(j+1<alto){
+				        if(matrizminas[i][j+1]==11)
+				        cont++;
+			        }
+				    if(i+1<ancho){
+				        if(matrizminas[i+1][j]==11)
+				        cont++;
+				    }
+				    if(j-1>=0){
+				        if(matrizminas[i][j-1]==11)
+				        cont++;
+				    }
+				    matrizminas[i][j]=cont;
+                }
+    	    }
+        }
         
         tablero.setRowCount(ancho);
         tablero.setColumnCount(alto);
-        for (int i = 0; i < ancho; i++) {
-        	for (int j=0; j<alto; j++){
-        		final Celda c =  new Celda(this,i,j,0);	
+        
+        for (int i=0;i<ancho;i++) {
+        	for (int j=0;j<alto;j++){
+        		final Celda c = new Celda(this,i,j,0);	
         		 if(matrizminas[i][j]==11){
          			c.valor=11;
          			Drawable d = getResources().getDrawable(drawable.tierra);
                     c.setImageDrawable(d);
-                    
-         			//c.setEnabled(false);
          			}else{
          				c.valor=matrizminas[i][j];
          				Drawable d = getResources().getDrawable(drawable.tierra);
          				c.setImageDrawable(d);
          			}	
-        		
         		 c.setOnLongClickListener(new OnLongClickListener() { 
         	        @Override
         	        public boolean onLongClick(View v) {
@@ -207,97 +199,64 @@ public class Juego extends Activity implements OnClickListener{
         		c.setOnClickListener(new View.OnClickListener() {
         			
                     public void onClick(View v) {
-                    	//Drawable d4 = getResources().getDrawable(drawable.carasorprendida);
-                    	//Drawable d5= getResources().getDrawable(drawable.download);
- 						//Drawable d2 = getResources().getDrawable(drawable.caramuerta);
-                    	/*if(((Celda) v).isPressed()){
-                    		if (c.valor==11){
- 								cara.setImageDrawable(d2);	
- 							}else{
- 								cara.setImageDrawable(d4);
- 							}
-                    	}else {
-                    		cara.setImageDrawable(d5);
-                    	}*/
                     	if(((Celda) v).bandera==false){
-	                    	if(((Celda) v).valor==0){
-	             				Drawable d = getResources().getDrawable(drawable.vacia);
-	                            c.setImageDrawable(d);
-	                            
-	             			}
-	             			if(((Celda) v).valor==1){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.uno);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	                            //c.setPressed(true);
-	             			}
-	             			if(((Celda) v).valor==2){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.dos);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==3){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.tres);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==4){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.cuatro);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==5){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.cinco);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==6){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.seis);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==7){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.siete);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==8){
-	             				//c.setBackgroundColor(Color.RED);
-	             				Drawable d = getResources().getDrawable(drawable.ocho);
-	                            c.setImageDrawable(d);
-	                            c.open=true;
-	             			}
-	             			if(((Celda) v).valor==11){
-	             				Drawable d = getResources().getDrawable(drawable.bomba);
-	                            c.setImageDrawable(d);
-								 for (int i = 0; i < ancho; i++) {
-	 						        	for (int j=0; j<alto; j++){
-	 						        		matriz[i][j].setEnabled(false);
-	 						        		if(matrizminas[i][j]==11 && matriz[i][j].open==false){
-	 						        			Drawable d1 = getResources().getDrawable(drawable.bomba);
-	 				                            matriz[i][j].setImageDrawable(d1);
-	 						        		}
-	 						        	}
-	 						        	
-	 								 }
-	 								AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
-	 								TextView myMsg = new TextView(Juego.this);
-	 								myMsg.setText("Has perdido");
-	 								tiempo1.stop();
-	 								myMsg.setGravity(Gravity.CENTER);
-	 								dialog.setView(myMsg);
-	 								dialog.show();
-	                            c.open=true;
-	             			}
-	                    	
-	             			
+                    		switch(((Celda)v).valor){
+	                    		case 0: c.setImageDrawable(getResources().getDrawable(drawable.vacia)); 
+	                    		break;
+	                    		case 1: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.uno));
+		                            c.open=true;
+	                    		}break;
+	                    		case 2: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.dos));
+		                            c.open=true;
+	                    		}break;
+	                    		case 3: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.tres));
+		                            c.open=true;
+	                    		}break;
+	                    		case 4: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.cuatro));
+		                            c.open=true;
+	                    		}break;
+	                    		case 5: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.cinco));
+		                            c.open=true;
+	                    		}break;
+	                    		case 6: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.seis));
+		                            c.open=true;
+	                    		}break;
+	                    		case 7: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.siete));
+		                            c.open=true;
+	                    		}break;
+	                    		case 8: {
+	                    			c.setImageDrawable(getResources().getDrawable(drawable.ocho));
+		                            c.open=true;
+	                    		}break;
+	                    		case 11: {
+		             				cara.setImageDrawable(getResources().getDrawable(drawable.caramuerta));
+		                            c.setImageDrawable(getResources().getDrawable(drawable.bomba));
+									 for (int i = 0; i < ancho; i++) {
+		 						        	for (int j=0; j<alto; j++){
+		 						        		matriz[i][j].setEnabled(false);
+		 						        		if(matrizminas[i][j]==11 && matriz[i][j].open==false){
+		 				                            matriz[i][j].setImageDrawable(getResources().getDrawable(drawable.bomba));
+		 						        		}
+		 						        	}	
+		 								}
+		 								AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+		 								TextView myMsg = new TextView(Juego.this);
+		 								myMsg.setText("Has perdido");
+		 								tiempo1.stop();
+		 								myMsg.setGravity(Gravity.CENTER);
+		 								dialog.setView(myMsg);
+		 								dialog.show();
+		                            c.open=true;
+	                    		}break;
+	                    		default: break;
+                    		}
 	             		c.descubrirAdyacentes(ancho-1,alto-1,matriz);
 	                    	int contad = 0;
 	                    	int num=0;
@@ -326,89 +285,28 @@ public class Juego extends Activity implements OnClickListener{
 	            				contad=0;
 	            				num=0;
 	            			}
-	                    	
-	                  
 	                    }
-                    	
                     }
-	                });
-        		c.setOnTouchListener(new OnTouchListener() {
-					
-					@Override
-				public boolean onTouch(View arg0, MotionEvent arg1) {
-						Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
-						Drawable d2 = getResources().getDrawable(drawable.caramuerta);
-					
-						if(arg1.getAction() == MotionEvent.ACTION_DOWN){
-							if (c.valor==11){
-								cara.setImageDrawable(d2);	
-							}else{
-								cara.setImageDrawable(d1);
-							}
-							
-							
-							//setPressed(true);
-						}else {
-							
-							if(arg1.getAction() == MotionEvent.ACTION_UP)
-								if (c.valor!=11){
-									cara.setImageDrawable(getResources().getDrawable(drawable.download));
-	 							}
-					}
-						return false;
-							
-					
-					
-				}
-				});
-	        		
-	        		matriz[i][j] = c;
-	        		tablero.addView((View)matriz[i][j]);
-	        	}
+	            });
+        		
+    	      c.setOnTouchListener(new OnTouchListener() {
+    	    	  public boolean onTouch(View arg0, MotionEvent arg1) {
+                      Drawable d1 = getResources().getDrawable(drawable.carasorprendida);
+                      if(arg1.getAction() == MotionEvent.ACTION_DOWN)
+                          cara.setImageDrawable(d1);
+                      else {
+                          if(arg1.getAction() == MotionEvent.ACTION_UP)
+                        	  cara.setImageDrawable(getResources().getDrawable(drawable.download));
+                      }
+                      return false;      
+    	    	  }
+              });
+    		matriz[i][j] = c;
+    		tablero.addView((View)matriz[i][j]);
+        	}
     	}
-        
-        
-        
-        
-        
-
     }
-    
-    class MyDragListener implements OnDragListener {
-    	  Drawable enterShape = getResources().getDrawable(R.drawable.band);
-    	 // Drawable normalShape = getResources().getDrawable(R.drawable.shape);
-    	  
-        @Override
-        public boolean onDrag(View v, DragEvent event) {
-                switch (event.getAction()) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    //no action necessary
-                    break;
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    //no action necessary
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    //no action necessary
-                    break;
-                case DragEvent.ACTION_DROP:
-                	View view = (View) event.getLocalState();
-                	view.setVisibility(View.INVISIBLE);
-                	Celda dropTarget = (Celda) v;
-                	ImageButton dropped = (ImageButton) view;
-                	dropTarget.setImageDrawable(dropped.getDrawable());
-                	dropTarget.valor = 99;
-                    return true;
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //no action necessary
-                    break;
-                default:
-                    break;
-            }
-        return true;
-        }
-    	}
-    
-  
+
     private void showElapsedTime() {
         long elapsedMillis = SystemClock.elapsedRealtime() - tiempo1.getBase();            
         Toast.makeText(Juego.this, "Elapsed milliseconds: " + elapsedMillis, 
