@@ -18,6 +18,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -37,6 +38,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -274,14 +276,14 @@ public class Juego extends Activity implements OnClickListener{
 	            				}
 	            			}
 	            			if(contad==num){
-	            				AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
-									TextView myMsg = new TextView(Juego.this);
-									myMsg.setText("Felicitaciones! Has ganado");
+	            				//AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+									//TextView myMsg = new TextView(Juego.this);
+									//myMsg.setText("Felicitaciones! Has ganado");
 									tiempo1.stop();
 									temfinal=tiempo1.getText();
-									myMsg.setGravity(Gravity.CENTER);
-									dialog.setView(myMsg);
-									dialog.show();
+									//myMsg.setGravity(Gravity.CENTER);p`p
+									//dialog.setView(myMsg);
+									//dialog.show();
 									onClickGuardar();
 									Drawable d = getResources().getDrawable(drawable.caragafas);
 		                            cara.setImageDrawable(d);
@@ -333,23 +335,57 @@ public void onClick(View v) {
 	
 }
 public void onClickGuardar(){
-    String str = temfinal.toString();
-    try{
-        FileOutputStream fos = openFileOutput("textFile.txt", MODE_PRIVATE);
-        OutputStreamWriter osw = new OutputStreamWriter(fos);
-         
-        // Escribimos el String en el archivo
-        osw.write(str);
-        osw.flush();
-        osw.close();
-         
-        // Mostramos que se ha guardado
-        Toast.makeText(getBaseContext(), "Guardado", Toast.LENGTH_SHORT).show();
-         
-        
-    }catch (IOException ex){
-        ex.printStackTrace();
-    }
+	final String str = temfinal.toString();
+	final EditText nombre= new EditText(this);
+	AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
+	nombre.setText("name_player");
+	nombre.setGravity(Gravity.CENTER_HORIZONTAL);
+	TextView myMsg = new TextView(Juego.this);
+	TextView my = new TextView(Juego.this);
+	my.setText("Ingrese su nombre:  ");
+	myMsg.setText("Felicitaciones! Has ganado");
+	LinearLayout linear=new LinearLayout(this);
+	LinearLayout linear1=new LinearLayout(this);
+	linear.setOrientation(1);
+	linear.addView(myMsg);
+	linear1.addView(my);
+	linear1.addView(nombre);
+	linear.addView(linear1);
+	popupBuilder.setView(linear); 
+    popupBuilder.setNegativeButton("cancelar", null);
+    
+   
+	
+    
+  
+    
+    
+	popupBuilder.setPositiveButton("Aceptar",new DialogInterface.OnClickListener() {
+
+        @Override
+		public void onClick(DialogInterface dialog, int which) {
+        	 try{
+        		 	
+        	        FileOutputStream f = openFileOutput("textFile.txt", MODE_APPEND);
+        	        OutputStreamWriter os = new OutputStreamWriter(f);
+        	         
+        	       
+        	        os.append(nombre.getText().toString()+ "\n");
+        	        os.append(str+ "\n");
+        	        os.flush();
+        	        os.close();
+        	        Toast.makeText(getBaseContext(), "Guardado", Toast.LENGTH_SHORT).show();
+        	         
+        	        
+        	    }catch (IOException ex){
+        	        ex.printStackTrace();
+        	    }
+			
+		}
+    });
+	popupBuilder.show();
+	
+   
      
 }
     
