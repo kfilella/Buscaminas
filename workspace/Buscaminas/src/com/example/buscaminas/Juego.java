@@ -51,6 +51,7 @@ import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class Juego extends Activity implements OnClickListener{
+	Jugador jugador;
 	private TextView tiempo;
 	private TextView puntaje,mina;
 	GridLayout tablero;
@@ -86,9 +87,13 @@ public class Juego extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.juego);
         Bundle datos = this.getIntent().getExtras();
+        final Jugador jugador = new Jugador();
         ancho=datos.getInt("dif1");
         alto=datos.getInt("dif");
         minas=datos.getInt("minas");
+        jugador.ancho = ancho;
+        jugador.alto = alto;
+        jugador.minas = minas;
         layouttiempo=(LinearLayout)this.findViewById(R.id.layouttiempo);
         tiempo1 = new Chronometer(this);
         tiempo1.start();
@@ -276,15 +281,10 @@ public class Juego extends Activity implements OnClickListener{
 	            				}
 	            			}
 	            			if(contad==num){
-	            				//AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
-									//TextView myMsg = new TextView(Juego.this);
-									//myMsg.setText("Felicitaciones! Has ganado");
 									tiempo1.stop();
 									temfinal=tiempo1.getText();
-									//myMsg.setGravity(Gravity.CENTER);p`p
-									//dialog.setView(myMsg);
-									//dialog.show();
-									onClickGuardar();
+									jugador.tiempo = temfinal;
+									onClickGuardar(jugador);
 									Drawable d = getResources().getDrawable(drawable.caragafas);
 		                            cara.setImageDrawable(d);
 									 for (int i = 0; i < ancho; i++)
@@ -334,11 +334,10 @@ public void onClick(View v) {
 	// TODO Auto-generated method stub
 	
 }
-public void onClickGuardar(){
-	final String str = temfinal.toString();
+public void onClickGuardar(final Jugador j){
 	final EditText nombre= new EditText(this);
 	AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
-	nombre.setText("name_player");
+	nombre.setText("");
 	nombre.setGravity(Gravity.CENTER_HORIZONTAL);
 	TextView myMsg = new TextView(Juego.this);
 	TextView my = new TextView(Juego.this);
@@ -352,31 +351,19 @@ public void onClickGuardar(){
 	linear1.addView(nombre);
 	linear.addView(linear1);
 	popupBuilder.setView(linear); 
-    popupBuilder.setNegativeButton("cancelar", null);
-    
-   
-	
-    
-  
-    
-    
+    popupBuilder.setNegativeButton("Cancelar", null);
 	popupBuilder.setPositiveButton("Aceptar",new DialogInterface.OnClickListener() {
 
         @Override
 		public void onClick(DialogInterface dialog, int which) {
         	 try{
-        		 	
         	        FileOutputStream f = openFileOutput("textFile.txt", MODE_APPEND);
         	        OutputStreamWriter os = new OutputStreamWriter(f);
-        	         
-        	       
-        	        os.append(nombre.getText().toString()+ "\n");
-        	        os.append(str+ "\n");
+        	        os.append("\n");
+        	        os.append("Jugador: "+nombre.getText().toString()+" Matriz: "+j.ancho+"x"+j.alto+" Minas: "+j.minas+" Tiempo: "+j.tiempo+"\n");
         	        os.flush();
         	        os.close();
         	        Toast.makeText(getBaseContext(), "Guardado", Toast.LENGTH_SHORT).show();
-        	         
-        	        
         	    }catch (IOException ex){
         	        ex.printStackTrace();
         	    }
