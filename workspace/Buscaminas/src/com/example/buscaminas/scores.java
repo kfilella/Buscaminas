@@ -49,7 +49,6 @@ public class scores extends Activity {
             br.close();
             archivo.close();
             prueb.setText(todo);
-            //prueb.setText(todo);
             Toast.makeText(getBaseContext(), "Cargado", Toast.LENGTH_SHORT).show();
            
         } catch (IOException e) {

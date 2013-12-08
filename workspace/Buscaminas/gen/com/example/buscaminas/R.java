@@ -54,19 +54,13 @@ public final class R {
         public static final int vacia=0x7f02001e;
     }
     public static final class id {
-        public static final int NumberPicker01=0x7f080027;
-        public static final int NumberPicker02=0x7f080029;
-        public static final int TextView01=0x7f080026;
-        public static final int TextView02=0x7f080028;
-        public static final int action_settings=0x7f08002c;
+        public static final int action_settings=0x7f08001b;
         public static final int bandera=0x7f080013;
-        public static final int button1=0x7f080022;
-        public static final int button2=0x7f080023;
         public static final int creditsB=0x7f080006;
         public static final int dificil=0x7f08000e;
         public static final int exitB=0x7f080005;
         public static final int facil=0x7f08000c;
-        public static final int fram=0x7f08002a;
+        public static final int fram=0x7f080019;
         public static final int highscoresB=0x7f080004;
         public static final int horizontalScrollView1=0x7f080001;
         public static final int imageView1=0x7f080002;
@@ -81,22 +75,11 @@ public final class R {
         public static final int n2=0x7f080009;
         public static final int n3=0x7f08000a;
         public static final int newgameB=0x7f080003;
-        public static final int numancho=0x7f08001b;
-        public static final int numbalto=0x7f08001e;
-        public static final int numberPicker1=0x7f080025;
-        public static final int numminas=0x7f080021;
-        public static final int personali=0x7f080019;
         public static final int personalizado=0x7f08000f;
-        public static final int prueb=0x7f08002b;
-        public static final int prueba=0x7f08001f;
+        public static final int prueb=0x7f08001a;
         public static final int puntaje=0x7f080011;
         public static final int scrollView1=0x7f080000;
-        public static final int seekBar1=0x7f08001a;
-        public static final int seekBar2=0x7f08001d;
-        public static final int seekBar3=0x7f080020;
         public static final int tabla=0x7f080018;
-        public static final int textView1=0x7f080024;
-        public static final int textView2=0x7f08001c;
         public static final int tiempo=0x7f080017;
         public static final int txtcredito=0x7f080007;
     }
@@ -105,9 +88,7 @@ public final class R {
         public static final int creditos=0x7f030001;
         public static final int dificultad=0x7f030002;
         public static final int juego=0x7f030003;
-        public static final int personalizado=0x7f030004;
-        public static final int personalizar=0x7f030005;
-        public static final int scores=0x7f030006;
+        public static final int scores=0x7f030004;
     }
     public static final class menu {
         public static final int buscaminas=0x7f070000;

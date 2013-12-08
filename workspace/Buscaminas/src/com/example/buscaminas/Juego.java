@@ -72,7 +72,6 @@ public class Juego extends Activity implements OnClickListener{
 		      ClipData data = ClipData.newPlainText("", "");
 		      DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
 		      view.startDrag(data, shadowBuilder, view, 0);
-		     // view.setVisibility(View.INVISIBLE);
 		      return true;
 		    } else {
 		    return false;
@@ -280,10 +279,7 @@ public class Juego extends Activity implements OnClickListener{
 	            				}
 	            			}
 	            			if(contad==num){
-	            				//AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
-									//TextView myMsg = new TextView(Juego.this);
-									//myMsg.setText("Felicitaciones! Has ganado");
-									tiempo1.stop();
+	            					tiempo1.stop();
 									temfinal=tiempo1.getText();
 									jugador.tiempo = temfinal;
 									onClickGuardar(jugador);
@@ -339,7 +335,7 @@ public void onClick(View v) {
 public void onClickGuardar(final Jugador j){
 	final EditText nombre= new EditText(this);
 	AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
-	nombre.setText("");
+	nombre.setText("       ");
 	nombre.setGravity(Gravity.CENTER_HORIZONTAL);
 	TextView myMsg = new TextView(Juego.this);
 	TextView my = new TextView(Juego.this);

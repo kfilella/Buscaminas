@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -110,7 +111,7 @@ public class Dificultad extends Activity implements OnClickListener  {
     	{   	
     		LinearLayout linear=new LinearLayout(this);
     		linear.setOrientation(1); 
-    		
+    		ScrollView scrol=new ScrollView(this);
     		LinearLayout an=new LinearLayout(this);
     		LinearLayout al=new LinearLayout(this);
     		LinearLayout mi=new LinearLayout(this);
@@ -191,9 +192,9 @@ public class Dificultad extends Activity implements OnClickListener  {
     	    linear.addView(text);
     	    linear.addView(an);
     	    linear.addView(mi);
-    	    
+    	    scrol.addView(linear);
     	    linear.setBackgroundDrawable(getResources().getDrawable(drawable.drag));
-    	    popupBuilder.setView(linear); 
+    	    popupBuilder.setView(scrol); 
     	    popupBuilder.setNegativeButton("cancelar", null);
     	    
     		popupBuilder.setPositiveButton("Aceptar",new DialogInterface.OnClickListener() {
