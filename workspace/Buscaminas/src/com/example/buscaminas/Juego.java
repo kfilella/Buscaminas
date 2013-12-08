@@ -51,7 +51,6 @@ import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class Juego extends Activity implements OnClickListener{
-	Jugador jugador;
 	private TextView tiempo;
 	private TextView puntaje,mina;
 	GridLayout tablero;
@@ -87,13 +86,9 @@ public class Juego extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.juego);
         Bundle datos = this.getIntent().getExtras();
-        final Jugador jugador = new Jugador();
         ancho=datos.getInt("dif1");
         alto=datos.getInt("dif");
         minas=datos.getInt("minas");
-        jugador.ancho = ancho;
-        jugador.alto = alto;
-        jugador.minas = minas;
         layouttiempo=(LinearLayout)this.findViewById(R.id.layouttiempo);
         tiempo1 = new Chronometer(this);
         tiempo1.start();
@@ -107,6 +102,10 @@ public class Juego extends Activity implements OnClickListener{
         cara.setOnClickListener(this);
         mina= (TextView)this.findViewById(R.id.minasss);
         mina.setText("        "+Integer.toString(minas));
+        final Jugador jugador = new Jugador();
+        jugador.ancho = ancho;
+        jugador.alto = alto;
+        jugador.minas = minas;
         
         
         puntaje=(TextView)this.findViewById(R.id.puntaje);
@@ -281,6 +280,9 @@ public class Juego extends Activity implements OnClickListener{
 	            				}
 	            			}
 	            			if(contad==num){
+	            				//AlertDialog dialog = new AlertDialog.Builder(Juego.this).create();
+									//TextView myMsg = new TextView(Juego.this);
+									//myMsg.setText("Felicitaciones! Has ganado");
 									tiempo1.stop();
 									temfinal=tiempo1.getText();
 									jugador.tiempo = temfinal;

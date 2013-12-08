@@ -36,7 +36,7 @@ public class Dificultad extends Activity implements OnClickListener  {
 	int fac=8,facminas=10;
 	int med=16,medminas=40;
 	int ancho=30, alto=16,difminas=99;
-	int a=4,b=4,c=0;
+	int a=2,b=2,c=1;
 	
 	
 	
@@ -130,92 +130,69 @@ public class Dificultad extends Activity implements OnClickListener  {
     	    
     	    TextView text=new TextView(this); 
     	    text.setText("Personalizar"); 
+    	    text.setTextColor(Color.BLUE);
      	    text.setPadding(10, 10, 10, 10);
-    	    final TextView numancho=new TextView(this);
-    	    numancho.setText("10");
-    	    final TextView numalto=new TextView(this); 
-    	    numalto.setText("6");
-    	    final TextView numminas=new TextView(this); 
-    	    numminas.setText("20");
-    	  
     	    
-    	    SeekBar seek3=new SeekBar(this);
-    	    seek3.setMax(200);
-    	    seek3.setProgress(2);
-    	   
-    	    seek3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-				@Override
-				public void onProgressChanged(SeekBar seekBar, int progress,
-						boolean fromUser) {
-					c=progress;
-					numminas.setText(Integer.toString(progress));
-					
-				}
-
-				@Override
-				public void onStartTrackingTouch(SeekBar seekBar) {
-				}
-
-				@Override
-				public void onStopTrackingTouch(SeekBar seekBar) {						
-				}
-			});
+     	   final NumberPicker seek3=new NumberPicker(this);
+      	    seek3.setMaxValue((a*b)/2);
+      	    seek3.setMinValue(1);
+      	    seek3.setWrapSelectorWheel(true);
+      	    seek3.setOnValueChangedListener( new NumberPicker.
+      	            OnValueChangeListener() {
+      	            @Override
+      	            public void onValueChange(NumberPicker picker, int
+      	                oldVal, int newVal) {
+      	            	c=newVal;
+      					
+      	            }
+      	        });
+    	     
+    	    NumberPicker seek1=new NumberPicker(this);
+    	    seek1.setMaxValue(30);
+    	    seek1.setMinValue(2);
+    	    seek1.setValue(2);
+    	    seek1.setWrapSelectorWheel(true);
+    	    seek1.setOnValueChangedListener( new NumberPicker.
+    	            OnValueChangeListener() {
+    	            @Override
+    	            public void onValueChange(NumberPicker picker, int
+    	                oldVal, int newVal) {
+    	            	a=newVal;
+    	            	seek3.setMaxValue((a*b)/2);
+    	            }
+    	        });
+    	    
+    	    NumberPicker seek2=new NumberPicker(this);
+    	    seek2.setMaxValue(30);
+    	    seek2.setMinValue(2);
+    	    seek2.setValue(2);
+    	    seek2.setWrapSelectorWheel(true);
+    	    seek2.setOnValueChangedListener( new NumberPicker.
+    	            OnValueChangeListener() {
+    	            @Override
+    	            public void onValueChange(NumberPicker picker, int
+    	                oldVal, int newVal) {
+    	            	b=newVal;
+    	            	seek3.setMaxValue((a*b)/2);
+    	            }
+    	        });
     	    
     	    
-    	    SeekBar seek1=new SeekBar(this); 
-    	    seek1.setMax(30);
-    	    seek1.setProgress(2);
-    	    seek1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-				@Override
-				public void onProgressChanged(SeekBar seekBar, int progress,
-						boolean fromUser) {
-					a=progress;
-					numancho.setText(Integer.toString(progress));
-					}
-
-				@Override
-				public void onStartTrackingTouch(SeekBar seekBar) {
-				}
-
-				@Override
-				public void onStopTrackingTouch(SeekBar seekBar) {						
-				}
-			});
-    	    SeekBar seek2=new SeekBar(this);
-    	    seek2.setMax(30);
-    	    seek2.setProgress(2);
-    	    seek2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-				@Override
-				public void onProgressChanged(SeekBar seekBar, int progress,
-						boolean fromUser) {
-					b=progress;
-					numalto.setText(Integer.toString(progress));
-					
-					
-				}
-
-				@Override
-				public void onStartTrackingTouch(SeekBar seekBar) {
-				}
-
-				@Override
-				public void onStopTrackingTouch(SeekBar seekBar) {						
-				}
-			});
+    	    
     	    
     	    an.addView(ancho);
-    	    an.addView(numancho);
-    	    al.addView(alto);
-    	    al.addView(numalto);
+    	    an.addView(seek1);
+    	    
+    	    an.addView(alto);
+    	    an.addView(seek2);
     	    mi.addView(minas);
-    	    mi.addView(numminas);
+    	    mi.addView(seek3);
+    	    
     	    linear.addView(text);
     	    linear.addView(an);
-    	    linear.addView(seek1);
-    	    linear.addView(al);
-    	    linear.addView(seek2);
     	    linear.addView(mi);
-    	    linear.addView(seek3);
+    	    
+    	    linear.setBackgroundDrawable(getResources().getDrawable(drawable.drag));
     	    popupBuilder.setView(linear); 
     	    popupBuilder.setNegativeButton("cancelar", null);
     	    
