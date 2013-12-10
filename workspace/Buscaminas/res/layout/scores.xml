@@ -9,6 +9,7 @@
         android:id="@+id/prueb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:text="TextView" />
 
 </FrameLayout>

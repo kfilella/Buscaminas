@@ -209,7 +209,7 @@ public class Juego extends Activity implements OnClickListener{
                     public void onClick(View v) {
                     	if(((Celda) v).bandera==false){
                     		switch(((Celda)v).valor){
-	                    		case 0: c.setImageDrawable(getResources().getDrawable(drawable.vacia)); 
+	                    		case 0: c.setImageDrawable(getResources().getDrawable(drawable.vacia));
 	                    		break;
 	                    		case 1: {
 	                    			c.setImageDrawable(getResources().getDrawable(drawable.uno));

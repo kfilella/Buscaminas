@@ -37,7 +37,7 @@ public class Dificultad extends Activity implements OnClickListener  {
 	int fac=8,facminas=10;
 	int med=16,medminas=40;
 	int ancho=30, alto=16,difminas=99;
-	int a=2,b=2,c=1;
+	int a=9,b=9,c=10;
 	
 	
 	
@@ -136,7 +136,7 @@ public class Dificultad extends Activity implements OnClickListener  {
     	    
      	   final NumberPicker seek3=new NumberPicker(this);
       	    seek3.setMaxValue((a*b)/2);
-      	    seek3.setMinValue(1);
+      	    seek3.setMinValue(10);
       	    seek3.setWrapSelectorWheel(true);
       	    seek3.setOnValueChangedListener( new NumberPicker.
       	            OnValueChangeListener() {
@@ -144,29 +144,41 @@ public class Dificultad extends Activity implements OnClickListener  {
       	            public void onValueChange(NumberPicker picker, int
       	                oldVal, int newVal) {
       	            	c=newVal;
-      					
       	            }
       	        });
     	     
     	    NumberPicker seek1=new NumberPicker(this);
     	    seek1.setMaxValue(30);
-    	    seek1.setMinValue(2);
-    	    seek1.setValue(2);
+    	    seek1.setMinValue(9);
+    	    //seek1.setValue(9);
     	    seek1.setWrapSelectorWheel(true);
     	    seek1.setOnValueChangedListener( new NumberPicker.
     	            OnValueChangeListener() {
     	            @Override
     	            public void onValueChange(NumberPicker picker, int
     	                oldVal, int newVal) {
-    	            	a=newVal;
+       	            	a=newVal;
+    	            	if(a*b<100)
+    	            		seek3.setMinValue(10);
+    	          	    if(a*b>=100 && a*b<200)
+    	          	    	seek3.setMinValue(15);
+    	          	    if(a*b>=200 && a*b<300)
+    	        	    	seek3.setMinValue(35);
+    	          	    if(a*b>=300 && a*b<400)
+    	          	    	seek3.setMinValue(45);
+    	          	    if(a*b>=400 && a*b<500)
+    	          	    	seek3.setMinValue(75);
+    	          	    if(a*b>=500 && a*b<800)
+    	          	    	seek3.setMinValue(150);
     	            	seek3.setMaxValue((a*b)/2);
+    	            	seek3.setValue((a*b)/2);
     	            }
     	        });
     	    
     	    NumberPicker seek2=new NumberPicker(this);
-    	    seek2.setMaxValue(30);
-    	    seek2.setMinValue(2);
-    	    seek2.setValue(2);
+    	    seek2.setMaxValue(24);
+    	    seek2.setMinValue(9);
+    	    //seek2.setValue(9);
     	    seek2.setWrapSelectorWheel(true);
     	    seek2.setOnValueChangedListener( new NumberPicker.
     	            OnValueChangeListener() {
@@ -174,7 +186,20 @@ public class Dificultad extends Activity implements OnClickListener  {
     	            public void onValueChange(NumberPicker picker, int
     	                oldVal, int newVal) {
     	            	b=newVal;
+    	            	if(a*b<100)
+    	            		seek3.setMinValue(10);
+    	          	    if(a*b>=100 && a*b<200)
+    	          	    	seek3.setMinValue(15);
+    	          	    if(a*b>=200 && a*b<300)
+    	        	    	seek3.setMinValue(35);
+    	          	    if(a*b>=300 && a*b<400)
+    	          	    	seek3.setMinValue(45);
+    	          	    if(a*b>=400 && a*b<500)
+    	          	    	seek3.setMinValue(75);
+    	          	    if(a*b>=500 && a*b<800)
+    	          	    	seek3.setMinValue(150);
     	            	seek3.setMaxValue((a*b)/2);
+    	            	seek3.setValue((a*b)/2);
     	            }
     	        });
     	    

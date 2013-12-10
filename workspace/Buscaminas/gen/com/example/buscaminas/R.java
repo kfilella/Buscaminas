@@ -52,6 +52,8 @@ public final class R {
         public static final int tres=0x7f02001c;
         public static final int uno=0x7f02001d;
         public static final int vacia=0x7f02001e;
+        public static final int vacia1=0x7f02001f;
+        public static final int vacia2=0x7f020020;
     }
     public static final class id {
         public static final int action_settings=0x7f08001b;
