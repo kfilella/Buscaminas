@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.12.10)  10 DEC 2013 14:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.12.10)  10 DEC 2013 21:56
 entering extended mode
 **DOCUMENTACION.tex
 (C:\Users\lauri\Buscaminas\DOCUMENTACION.tex
@@ -596,62 +596,99 @@ File: imagenes/Android_robot.png Graphic file (type png)
 Package pdftex.def Info: imagenes/Android_robot.png used on input line 95.
 (pdftex.def)             Requested size: 119.60278pt x 142.26378pt.
  [3 <C:/Users/lauri/Buscaminas/imagenes/119px-Firefox_Multiple_mines.png> <C:/U
-sers/lauri/Buscaminas/imagenes/120px-Cube_Minesweeper_3D.png>] [4 <C:/Users/lau
-ri/Buscaminas/imagenes/Android_robot.png>]
+sers/lauri/Buscaminas/imagenes/120px-Cube_Minesweeper_3D.png>]
+<imagenes/Screenshot_2013-12-11-08-02-11.png, id=21, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-02-11.png Graphic file (type png)
 
-Package Listings Warning: Text dropped after begin of listing on input line 150
-.
+<use imagenes/Screenshot_2013-12-11-08-02-11.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-02-11.png used on in
+put line 106.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [4 <C:/Users/lauri/Buscaminas/imagenes/Android_robot.png>]
+<imagenes/Screenshot_2013-12-11-08-02-16.png, id=26, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-02-16.png Graphic file (type png)
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 151.
+<use imagenes/Screenshot_2013-12-11-08-02-16.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-02-16.png used on in
+put line 115.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [5 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-02-11.png>]
+<imagenes/Screenshot_2013-12-11-08-03-01.png, id=30, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-03-01.png Graphic file (type png)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
-File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 151.
+<use imagenes/Screenshot_2013-12-11-08-03-01.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-03-01.png used on in
+put line 127.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [6 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-02-16.png>] [7
+ <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-03-01.png>]
+<imagenes/Screenshot_2013-12-11-08-36-13.png, id=38, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-36-13.png Graphic file (type png)
 
+<use imagenes/Screenshot_2013-12-11-08-36-13.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-36-13.png used on in
+put line 151.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [8 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-36-13.png>]
+<imagenes/Screenshot_2013-12-11-08-02-34.png, id=42, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-02-34.png Graphic file (type png)
 
-Package Listings Warning: Text dropped after begin of listing on input line 157
-.
+<use imagenes/Screenshot_2013-12-11-08-02-34.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-02-34.png used on in
+put line 168.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [9 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-02-34.png>]
+<imagenes/Screenshot_2013-12-11-08-03-31.png, id=46, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-03-31.png Graphic file (type png)
 
+<use imagenes/Screenshot_2013-12-11-08-03-31.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-03-31.png used on in
+put line 182.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
 
-Package Listings Warning: Text dropped after begin of listing on input line 164
-.
+<imagenes/Screenshot_2013-12-11-08-04-22.png, id=47, 321.2pt x 481.8pt>
+[10 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-03-31.png>]
+File: imagenes/Screenshot_2013-12-11-08-04-22.png Graphic file (type png)
 
+<use imagenes/Screenshot_2013-12-11-08-04-22.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-04-22.png used on in
+put line 196.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
 
-Package Listings Warning: Text dropped after begin of listing on input line 172
-.
+<imagenes/Screenshot_2013-12-11-08-04-40.png, id=51, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-04-40.png Graphic file (type png)
 
-[5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 173.
+<use imagenes/Screenshot_2013-12-11-08-04-40.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-04-40.png used on in
+put line 202.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [11 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-04-22.png>]
+<imagenes/Screenshot_2013-12-11-08-04-54.png, id=55, 321.2pt x 481.8pt>
+File: imagenes/Screenshot_2013-12-11-08-04-54.png Graphic file (type png)
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 173.
- [6]
+<use imagenes/Screenshot_2013-12-11-08-04-54.png>
+Package pdftex.def Info: imagenes/Screenshot_2013-12-11-08-04-54.png used on in
+put line 209.
+(pdftex.def)             Requested size: 227.62204pt x 341.4408pt.
+ [12 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-04-40.png>] [
+13 <C:/Users/lauri/Buscaminas/imagenes/Screenshot_2013-12-11-08-04-54.png>]
 (C:\Users\lauri\Buscaminas\DOCUMENTACION.aux) ) 
 Here is how much of TeX's memory you used:
- 6031 strings out of 493921
- 85705 string characters out of 3144875
- 156008 words of memory out of 3000000
- 9256 multiletter control sequences out of 15000+200000
- 10527 words of font info for 37 fonts, out of 3000000 for 9000
+ 5775 strings out of 493921
+ 85087 string characters out of 3144875
+ 150046 words of memory out of 3000000
+ 8999 multiletter control sequences out of 15000+200000
+ 10013 words of font info for 35 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,11n,43p,446b,1637s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,11n,43p,724b,336s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmss12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmti10.pfb>
-Output written on DOCUMENTACION.pdf (6 pages, 171835 bytes).
+.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmss12.pfb>
+Output written on DOCUMENTACION.pdf (13 pages, 1585026 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

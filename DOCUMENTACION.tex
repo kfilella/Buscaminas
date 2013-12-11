@@ -95,93 +95,133 @@ Inicialmente debido  a la naturaleza del proyecto y a las caracteristicas del cu
 \includegraphics[height=5cm]{imagenes/Android_robot.png}
 \section{PROBLEMAS }
 
+Durante el desarrollo de la aplicacion surgieron un sinnumero de problemas que enfrentamos para lograr construir una aplicacion estable y que cumpla con las epecificaciones del juego Buscaminas
+A continuacion esta un breve resumen de los problemas mas importante que nos topamos durante el desarrollo  y lo que hicimos para solucionarlo.
+Los problemas se encuentran en orden cronologico, por lo cual tambien sirven para dar una idea del progreso relativo del proyecto a traves del tiempo.
 
 \subsection{primer problema}
+\begin{center}
+Vista de la aplicacion en el dispositivo Android. 
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-02-11.png}
+\end{center}
 
 Durante los primeros pasos en el desarrollo de la aplicacion no tuvimos inconvenientes reales. El parecido con el lenguaje de java hizo que facilemente implementasemos los menus y las pantallas de presentacion
 Lo mas dificil de la presentacion y que nos tuvo discutiendo hasta el final fue que clase de botones o celdas utilizariamos para el buscaminas. Button, ToogleButton, ImageButton etc...
 
-\section{Tutorial de Instalación}
-\subsection{Debemos ir al siguiente link (http://www.gnu.org/software/mit-scheme/) y descargar el paquete de instalación del lenguaje SCHEME correspondiente al sistema operativo en la q se va a trabajar, en este caso yo instalare el paquete de Windows 7.
-lo elegimos e inmediatamente comenzara la descarga del paquete de instalación}
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/1.png}
+Vista del Menu Principal
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-02-16.png}
 \end{center}
 
-\subsection{Ejecutamos el paquete de instalación de SCHEME y aparecerá la siguiente ventana donde le damos en NEXT}
+\subsection{segundo problema}
+
+La colocacion de minas y de numeros en la matriz del juego fue bastante trivial. Sin embargo empezarona  surgir problemas en los bordes de la matriz, especialmente en lo que respecta al conteo de las minas.
+Al parecer nuestro algoritmo de conteo no tenia la suficiente validacion como para operar en las celdas limite de la matriz. El contador simplemente se detenia cada vez que el amgoritmo se topaba con una mina del borde, Y por las caracteristicas recursivas del mismo era bastante poco eficiente poner condiciones limites para los cuatro bordes de la matriz. Al final el problema fue solucionado enviando la funcion recursiva a cada una de las 8 celdas adyacentes individualmente a travez de bloques IF, los cuales salian cuando la celda estaba fuera de limites.
+
+
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/2.png}
+Vista del la matriz del juego con todos sus elementos. 
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-03-01.png}
 \end{center}
 
-\subsection{Ahora nos aparecerá una nueva ventana donde estarán los términos de licencia del programa, si está de acuerdo le da clic en  I AGREE, caso contrario atrás o cancelar}
+\subsection{tercer problema }
+
+Al colocar las minas trivial y aleatoriamente sobre la matriz del juego todo parecia funcionar muy bien, no fue sino luego de extensa experimentacion que hallamos un problema.
+Las minas siempre se colocaban de igual o menor numero del que nosotros le enviabamos como parametro. Al principio pensamos que la causa de este problema era logica mal implementada en el contador. Luego de verificar que todo estaba aparentemente bien decidimos que la validacion no estaba funcionando y que varias minas podrian asignarse en una misma posicion, lo cual realmente era el caso ya que cuando cambiamos el metodo de validacion el problema se soluciono
+
+
+\subsection{cuarto problema }
+
+La implementacion del algoritmo recursivo para descubrir minas adyacentes vacias o numeros parecia a primera instancia facil de implementar. Pero realmente no fue asi. El algoritmo fallaba en los bordes, pero solo en el borde derecho y en el borde inferior. 
+Ademas debido a la maturaleza expansiva y recursiva del mismo este se volvia perceptiblemente mas lento a medida que aumentaba el tamaño del tablero del juego. Esto debido a que la cantidad de veces que este debia ejecutarse aumenta exponencialmente 
+a medida que aumentan las dimensiones de la matriz. Ademas de eso el algoritmo tambien tenia problemas cuando este llegaba al borde de la matriz de juego. Poco a poco se fueron solucionando los problemas. Uno por uno. Primero introducimos nuevas validaciones para evitar los bordes, Luego optimizamos un poco el codigo para que se ejecute mas rapido el algoritmo.
+
+Un aspecto persistente de este problema fueron los bordes derecho e inferior. Lo solucionamos temporalmente aplicando una estricta validacion en la ejecucion del algoritmo.
+Problemas con los bordes derecho e inferior del tablero se presentaron en practicamente todo el proceso de desarrollo de la aplicacion. Al final nos dimos cuenta que los limites estaban mal establecidos en la creacion de la matriz y ademas los ejes estaban intercambiados. Aunque igual pudimos lograr que el juego se ejecute normalmente a pesar de tener todos estos problemas, nos vimos obligados a reescribir codigo para arreglar el inconveniente luego del cual acabaron nuestros problemas con los bordes antes mencionados.
+
+Luego de esto el juego podia ejecutarse con un 100% de funcionalidad.
+
+
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/3.png}
+Algoritmo descubrir celdas
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-36-13.png}
 \end{center}
 
-\subsection{Nos aparecerá otra ventana donde debemos ingresar una dirección e el disco duro donde queremos q el programa se instale, si quiere puede dejar la dirección que se encuentra escrita por defecto y le da clic en NEXT}
+
+
+\subsection{quinto problema }
+
+Luego de solucionar bastantes problemas evidentes y que el juego se pudiese implementar de manera confiable en los niveles Facil, Intemedio y Dificil. Solo quedaba implementar el modo personalizado, en el cual el usuario decide las dimensiones de la matriz y el numero de minas que esta posee. Aqui nos dimos cuenta de algunos problemas que habian escapado nuestra atencion, como por ejemplo la incapacidad de nuestro codigo para trabajar con matrices no cuadradas. O la gigantesca cantidad de memoria que ocupaba la ejecucion del programa cuando se seleccionaba un tablero relativamente grande con pocas minas, ya que las minas y los bordes son lo unico que paran la ejecucion de la funcion recursiva. 
+
+Estos problemas los solucionando revisando de nuevo el codigo e introduciendo nuevos elementos de validacion en algunas funciones. 
+En el caso del problema de la matriz cuadrada se soluciono satisfactoriamente.
+El caso de la recursividad ocupando exesiva memoria solo lo pudimos solucionar parcialemnte. 
+Nos vimos obligados a implementar limites en cuanto al numero minimo de minas que el usuario puede implementar, de acuerdo a las dimensiones elegidas por el usuario.
+
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/4.png}
+interface Personalizado. Incluye actualizacion en tiempo real del limite de minas 
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-02-34.png}
 \end{center}
 
-\subsection{Aparecerá una nueva ventana donde podemos cambiar el nombre a la carpeta donde se va a instalar el programa, si quieren pueden dejar el nombre que se encuentra por defecto y dar clic en  INSTALL }
+
+\subsection{sexto problema DRAG AND DROP }
+
+Como especificacion de este proyecto se encuentra la caracteristica de poder agregar banderas a las celdas mediante el uso de la funcionalidad Drag and Drop.
+Luego de varios intentos decidimos implementar las banderas usando el metodo LongClick. el cual es compatible con anteriores versiones de Android y es mas facil de implementar.
+
+
+
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/5.png}
+interface Personalizado. Incluye actualizacion en tiempo real del limite de minas 
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-03-31.png}
 \end{center}
 
-\subsection{Comenzara a instalarse el programa hasta que la barra llegue al 100 y aparecerá una nueva ventana donde le damos clic en FINISH para confirmar que el programa se ha instalado correctamente}
+
+
+\section{Alcance}
+
+Este proyecto al momento de finalizar este documento posee toda al funcionalidad que se espera de un juego de Buscaminas. Se podria mejorar en la parte estetica y tal vez en el aspecto de facilidad de uso . 
+Debido a el limite de tiempo el scoreboard del juego no esta en orden. Aunque probablemente lo este antes de finalizar la semana. Tenemos aun la limitacion en cuanto al numero de minas en la matriz personalizada, pero a pesar de todo 
+podria decirse que el juego esta listo para ser probado por usuarios fuera del circulo de desarrolladores.
+
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/6.png}
+Pantalla de Victoria
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-04-22.png}
 \end{center}
 
-\subsection{Ahora vemos en nuestro escritorio y nos va a aparecer un nuevo icono que le pertenece al programa SCHEME recién instalado, le damos doble clic y se abrirá}
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/7.png}
+Ingresa el nombre del ganador
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-04-40.png}
 \end{center}
 
-\subsection{Finalmente tenemos instalado en nuestro ordenador el lenguaje SCHEME listo para trabajar}
+
 \begin{center}
-%\includegraphics[width=12cm]{imagenes/8.png}
+Scoreboard
+
+\includegraphics[width=8cm]{imagenes/Screenshot_2013-12-11-08-04-54.png}
 \end{center}
 
-\section{Hola Mundo y otros Programas Introductorios}
 
-% Set your language (you can change the language for each code-block optionally)
-\begin{lstlisting}[frame=single]  % Start your code-block
-for i:=maxint to 0 do
-> (display "Hola mundo")
-Hola mundo
-\end{lstlisting}
-'display' se utiliza para mostrar texto en pantalla. Este código muestra 'Hola mundo' en pantalla.
 
-\begin{lstlisting}[frame=single]  % Start your code-block
-for i:=maxint to 0 do
-> (sin 90)
-1
-\end{lstlisting}
-Este código muestra el seno de 90 grados en pantalla: 1.
 
-\begin{lstlisting}[frame=single]  % Start your code-block
-for i:=maxint to 0 do
-> (map + '(5 2 1) '(3 4 4))
-(8 6 5)
-\end{lstlisting}
-'map' recibe un procedimiento y lo utiliza en los elementos de una lista, retornando una lista de resultados.
-En este caso, utiliza el operador suma y retorna la suma de las dos listas: (8 6 5).
 
-\begin{lstlisting}[frame=single]  % Start your code-block
-for i:=maxint to 0 do
-> (define (cuadrado x) (* x x))
-> (cuadrado 10)
-100
-\end{lstlisting}
-En este código, hemos declarado una función llamada 'cuadrado' que recibe un parámetro 'x'. El cuerpo de tal función esta después de su declaración, y consiste en elevar 'x' al cuadrado usando el operador de multiplicación. En la siguiente línea, llamamos a la función 'cuadrado' y le enviamos '10' como parámetro, retornando 100 como resultado.
+
+
+
+
+
+
+
+
   
-\begin{thebibliography}{1}
 
-\bibitem{quote} Gerald Jay Sussman and Guy L. Steele, Jr. {\em The First Report on Scheme Revisited}  December 1998.
-
-\bibitem{url}  WikiBooks - Scheme Programming {\em \url{http://en.wikibooks.org/wiki/Scheme_Programming/}} December 2010.
-
-\end{thebibliography}
 
 \end{document}

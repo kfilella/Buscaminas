@@ -5,14 +5,9 @@
 \contentsline {subsection}{\numberline {2.1}Desarrollo inicial}{3}
 \contentsline {section}{\numberline {3}PROBLEMAS }{4}
 \contentsline {subsection}{\numberline {3.1}primer problema}{4}
-\contentsline {section}{\numberline {4}Tutorial de Instalaci\IeC {\'o}n}{4}
-\contentsline {subsection}{\numberline {4.1}Debemos ir al siguiente link (http://www.gnu.org/software/mit-scheme/) y descargar el paquete de instalaci\IeC {\'o}n del lenguaje SCHEME correspondiente al sistema operativo en la q se va a trabajar, en este caso yo instalare el paquete de Windows 7. lo elegimos e inmediatamente comenzara la descarga del paquete de instalaci\IeC {\'o}n}{4}
-\contentsline {subsection}{\numberline {4.2}Ejecutamos el paquete de instalaci\IeC {\'o}n de SCHEME y aparecer\IeC {\'a} la siguiente ventana donde le damos en NEXT}{4}
-\contentsline {subsection}{\numberline {4.3}Ahora nos aparecer\IeC {\'a} una nueva ventana donde estar\IeC {\'a}n los t\IeC {\'e}rminos de licencia del programa, si est\IeC {\'a} de acuerdo le da clic en I AGREE, caso contrario atr\IeC {\'a}s o cancelar}{4}
-\contentsline {subsection}{\numberline {4.4}Nos aparecer\IeC {\'a} otra ventana donde debemos ingresar una direcci\IeC {\'o}n e el disco duro donde queremos q el programa se instale, si quiere puede dejar la direcci\IeC {\'o}n que se encuentra escrita por defecto y le da clic en NEXT}{5}
-\contentsline {subsection}{\numberline {4.5}Aparecer\IeC {\'a} una nueva ventana donde podemos cambiar el nombre a la carpeta donde se va a instalar el programa, si quieren pueden dejar el nombre que se encuentra por defecto y dar clic en INSTALL }{5}
-\contentsline {subsection}{\numberline {4.6}Comenzara a instalarse el programa hasta que la barra llegue al 100 y aparecer\IeC {\'a} una nueva ventana donde le damos clic en FINISH para confirmar que el programa se ha instalado correctamente}{5}
-\contentsline {subsection}{\numberline {4.7}Ahora vemos en nuestro escritorio y nos va a aparecer un nuevo icono que le pertenece al programa SCHEME reci\IeC {\'e}n instalado, le damos doble clic y se abrir\IeC {\'a}}{5}
-\contentsline {subsection}{\numberline {4.8}Finalmente tenemos instalado en nuestro ordenador el lenguaje SCHEME listo para trabajar}{5}
-\contentsline {section}{\numberline {5}Hola Mundo y otros Programas Introductorios}{5}
-\contentsline {section}{Referencias}{6}
+\contentsline {subsection}{\numberline {3.2}segundo problema}{6}
+\contentsline {subsection}{\numberline {3.3}tercer problema }{7}
+\contentsline {subsection}{\numberline {3.4}cuarto problema }{7}
+\contentsline {subsection}{\numberline {3.5}quinto problema }{9}
+\contentsline {subsection}{\numberline {3.6}sexto problema DRAG AND DROP }{10}
+\contentsline {section}{\numberline {4}Alcance}{10}
